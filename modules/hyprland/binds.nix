@@ -70,27 +70,28 @@ let
 in
 
 {
-  config.wayland.windowManager.hyprland.settings.bind = [
-    "$mod, W, exec, rofi -show drun -show-icons"
-    "$mod, Return, exec, $terminal"
-    "$mod, Q, killactive,"
-    "$mod, M, exit,"
-    "$mod, E, exec, $fileManager"
-    "$mod, V, togglefloating,"
-    "$mod, R, exec, $menu"
-    "$mod, P, pseudo," # dwindle
-    "$mod, G, togglesplit," # dwindle
-    "$mod, I, exec, $ide"
-    "$mod, Z, exec, zeditor"
-    "$mod, O, exec, $browser"
-    "$mod, L, exec, swaylock"
-    "$mod CTRL, semicolon, exec, sudo shutdown now"
-    "$mod CTRL ALT, semicolon, exec, sudo reboot now"
-  ]
-  ++ workspaces
-  ++ moveFocus
-  ++ resizeWindows
-  ++ mediaBinds;
+  config.wayland.windowManager.hyprland.settings.bind =
+    [
+      "$mod, W, exec, rofi -show drun -show-icons"
+      "$mod, Return, exec, $terminal"
+      "$mod, Q, killactive,"
+      "$mod, M, exit,"
+      "$mod, E, exec, $fileManager"
+      "$mod, V, togglefloating,"
+      "$mod, R, exec, $menu"
+      "$mod, P, pseudo," # dwindle
+      "$mod, G, togglesplit," # dwindle
+      "$mod, I, exec, $ide"
+      "$mod, Z, exec, zeditor"
+      "$mod, O, exec, $browser"
+      "$mod, L, exec, swaylock"
+      "$mod CTRL, semicolon, exec, sudo shutdown now"
+      "$mod CTRL ALT, semicolon, exec, sudo reboot now"
+    ]
+    ++ workspaces
+    ++ moveFocus
+    ++ resizeWindows
+    ++ mediaBinds;
 
   config.wayland.windowManager.hyprland.settings.bindm = lib.mkDefault [
     # Move/resize windows with mainMod + LMB/RMB and dragging

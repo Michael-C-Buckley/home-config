@@ -1,31 +1,32 @@
-{ platform, ... }: let
+{ platform, ... }:
+let
 
-myShellAliases = {
-  ll = "ls -l";
-  ".." = "cd ..";
-  ip = "ip --color=auto";
-  z = "zoxide";
-  k = "kubectl";
-  gs = "git status";
-};
+  myShellAliases = {
+    ll = "ls -l";
+    ".." = "cd ..";
+    ip = "ip --color=auto";
+    z = "zoxide";
+    k = "kubectl";
+    gs = "git status";
+  };
 
-gitAliases = {
-  pu = "push";
-  co = "checkout";
-  cm = "commit";
-  f = "fetch";
-  fb = "fetch --rebase";
-};
+  gitAliases = {
+    pu = "push";
+    co = "checkout";
+    cm = "commit";
+    f = "fetch";
+    fb = "fetch --rebase";
+  };
 
-graphicImports = [
-  ./vscode.nix
-  ./waybar/default.nix
-];
+  graphicImports = [
+    ./vscode.nix
+    ./waybar/default.nix
+  ];
 
-in {
+in
+{
 
-  imports = [ ./nushell.nix ]
-  ++ (if (platform != "server") then graphicImports else [] );
+  imports = [ ./nushell.nix ] ++ (if (platform != "server") then graphicImports else [ ]);
 
   programs = {
     nushell.shellAliases = myShellAliases;
@@ -40,8 +41,8 @@ in {
       settings = {
         add_newline = true;
         character = {
-        success_symbol = "[➜](bold green)";
-        error_symbol = "[➜](bold red)";
+          success_symbol = "[➜](bold green)";
+          error_symbol = "[➜](bold red)";
         };
       };
     };

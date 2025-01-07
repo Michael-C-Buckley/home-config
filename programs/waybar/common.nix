@@ -4,9 +4,9 @@
 
 {
   layer = "top";
-  margin-bottom= -5;
-  margin-top= 10;
-  modules-left= [
+  margin-bottom = -5;
+  margin-top = 10;
+  modules-left = [
     "tray"
     "hyprland/workspaces"
   ];
@@ -20,19 +20,23 @@
   ];
 
   pulseaudio = {
-    tooltip= false;
+    tooltip = false;
     scroll-step = 5;
     format = "{icon} {volume}%";
     format-muted = "{icon} *M{volume}%*";
     on-click = "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle";
     on-click-right = "pavucontrol";
     format-icons = {
-      default = ["" "" ""];
+      default = [
+        ""
+        ""
+        ""
+      ];
     };
   };
 
   network = {
-    format-wifi= "";
+    format-wifi = "";
     format-ethernet = "";
     tooltip-format = "{essid} ({signalStrength}%)";
     format-linked = "{ifname} (No IP) ";
@@ -40,8 +44,8 @@
     format-alt = "{ifname}: {ipaddr}/{cidr}";
   };
 
-  tray ={
-    icon-size =18;
+  tray = {
+    icon-size = 18;
     spacing = 10;
   };
 
@@ -52,9 +56,9 @@
   };
 
   "custom/power" = {
-      format = " ⏻ ";
-      on-click = "nwgbar";
-      tooltip = false;
+    format = " ⏻ ";
+    on-click = "nwgbar";
+    tooltip = false;
   };
 
   "hyrpland/workspaces" = {

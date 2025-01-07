@@ -22,8 +22,8 @@
       ms-python.python
       ms-python.vscode-pylance
       ms-pyright.pyright
-      
-      # Nix   
+
+      # Nix
       bbenoist.nix
 
       # Rust

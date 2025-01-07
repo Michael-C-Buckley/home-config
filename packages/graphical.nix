@@ -5,26 +5,28 @@ let
     # System Utilities
     networkmanagerapplet
     cpu-x
-    pavucontrol     # Pulse Volume control
+    pavucontrol # Pulse Volume control
     gammastep
+
+    # Desktop
+    xfce.thunar
 
     # Communication
     librewolf
     brave
     signal-desktop
-    vesktop               # Independent Discord
-    kotatogram-desktop    # Telegram Fork
+    vesktop # Independent Discord
+    kotatogram-desktop # Telegram Fork
     tor-browser
 
     # Media
     vlc
-    gimp
-    zathura               # PDF Viewer
-    sxiv                  # Simple photo viewer
+    zathura # PDF Viewer
+    sxiv # Simple photo viewer
 
     # Productivity
-    kdePackages.kalgebra  # Calculator
-    neovide               # Nvim GUI
+    kdePackages.kalgebra # Calculator
+    neovide # Nvim GUI
   ];
 
   unstablePkgList = with unstablePkgs; [

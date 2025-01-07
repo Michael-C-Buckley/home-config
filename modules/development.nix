@@ -1,4 +1,8 @@
-{ unstablePkgs, ... }: {
+{ unstablePkgs, ... }:
+{
+
+  imports = [ ../programs/vscode.nix ];
+
   home.packages = with unstablePkgs; [
     devenv
     python3

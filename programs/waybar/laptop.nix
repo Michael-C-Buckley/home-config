@@ -16,7 +16,7 @@
   backlight = {
     tooltip = false;
     format = " {}%";
-    interval  =1;
+    interval = 1;
     on-scroll-up = "brightnessctl s 10%+";
     on-scroll-down = "brightnessctl s 10%-";
     on-click = "brightnessctl s 100%";
@@ -33,6 +33,12 @@
     format-charging = " {capacity}%";
     format-plugged = " {capacity}%";
     format-alt = "{time} {icon}";
-    format-icons = ["" "" "" "" ""];
-  }; 
+    format-icons = [
+      ""
+      ""
+      ""
+      ""
+      ""
+    ];
+  };
 }
