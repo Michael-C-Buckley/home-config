@@ -12,5 +12,6 @@
     nixd
     nil
     nixfmt-rfc-style
+    alejandra
   ];
 }
