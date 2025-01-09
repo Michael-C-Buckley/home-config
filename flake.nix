@@ -20,7 +20,7 @@
     home-manager,
     ...
   } @ inputs: let
-    system = builtins.currentSystem;
+    system = "x86_64-linux";
 
     getPkgs = {
       nixpkgs,
