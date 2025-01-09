@@ -48,7 +48,7 @@
               [ ]
           );
         in
-        home-manager.lib.d {
+        home-manager.lib.homeConfiguration {
           extraSpecialArgs = { inherit inputs features; };
           modules = [ ./home.nix ] ++ hostFile ++ extraModules;
         };
