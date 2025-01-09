@@ -22,21 +22,15 @@
       ...
     }@inputs:
     let
-      system = "x86_64-linux";
+        system = builtins.currentSystem;
 
-      pkgs = import nixpkgs {
+        getPkgs = { nixpkgs, system }: import nixpkgs {
         system = system;
-        config = {
-          allowUnfree = true;
+        config = { allowUnfree = true; };
         };
-      };
 
-      unstablePkgs = import inputs.nixpkgs-unstable {
-        system = system;
-        config = {
-          allowUnfree = true;
-        };
-      };
+        pkgs = getPkgs { nixpkgs = nixpkgs; system = system; };
+        unstablePkgs = getPkgs { nixpkgs = inputs.nixpkgs-unstable; system = system; };
 
       homeConfig =
         {
@@ -54,7 +48,7 @@
               [ ]
           );
         in
-        home-manager.lib.d {
+        home-manager.lib.default {
           extraSpecialArgs = { inherit inputs features; };
           modules = [ ./home.nix ] ++ hostFile ++ extraModules;
         };
