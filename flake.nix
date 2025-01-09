@@ -39,8 +39,8 @@
       };
 
       homeConfig =
-        hostname:
         {
+          hostname ? null,
           features ? [ ],
           extraModules ? [ ],
         }:
