@@ -14,54 +14,58 @@
     };
   };
 
-  outputs =
-    {
-      self,
+  outputs = {
+    self,
+    nixpkgs,
+    home-manager,
+    ...
+  } @ inputs: let
+    system = builtins.currentSystem;
+
+    getPkgs = {
       nixpkgs,
-      home-manager,
-      ...
-    }@inputs:
-    let
-        system = builtins.currentSystem;
-
-        getPkgs = { nixpkgs, system }: import nixpkgs {
+      system,
+    }:
+      import nixpkgs {
         system = system;
-        config = { allowUnfree = true; };
-        };
+        config = {allowUnfree = true;};
+      };
 
-        pkgs = getPkgs { nixpkgs = nixpkgs; system = system; };
-        unstablePkgs = getPkgs { nixpkgs = inputs.nixpkgs-unstable; system = system; };
+    pkgs = getPkgs {
+      nixpkgs = nixpkgs;
+      system = system;
+    };
+    unstablePkgs = getPkgs {
+      nixpkgs = inputs.nixpkgs-unstable;
+      system = system;
+    };
+  in {
+    homeConfigurations = {
+      "michael@x570" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit inputs unstablePkgs;};
+        pkgs = import nixpkgs {inherit system;};
+        modules = [
+          ./home.nix
+          ./hosts/x570.nix
+        ];
+      };
 
-      homeConfig =
-        {
-          hostname ? null,
-          features ? [ ],
-          extraModules ? [ ],
-        }:
-        let
-          hostFile = (
-            if hostname != null then
-              [
-                ./hosts/${hostname}.nix
-              ]
-            else
-              [ ]
-          );
-        in
-        home-manager.lib.homeConfiguration {
-          extraSpecialArgs = { inherit inputs features; };
-          modules = [ ./home.nix ] ++ hostFile ++ extraModules;
-        };
-    in
-    {
-      homeConfigurations = {
-        "michael@x570" = homeConfig {
-          hostname = "x570";
-        };
-        "michael@t14" = homeConfig {
-          hostname = "t14";
-        };
-        "michael" = homeConfig { };
+      "michael@t14" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit inputs unstablePkgs;};
+        pkgs = import nixpkgs {inherit system;};
+        modules = [
+          ./home.nix
+          ./hosts/t14.nix
+        ];
+      };
+
+      "michael" = home-manager.lib.homeManagerConfiguration {
+        extraSpecialArgs = {inherit inputs unstablePkgs;};
+        pkgs = import nixpkgs {inherit system;};
+        modules = [
+          ./home.nix
+        ];
       };
     };
+  };
 }
