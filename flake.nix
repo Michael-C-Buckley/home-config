@@ -36,6 +36,7 @@
       system = system;
     };
   in {
+    path = self;
     homeConfigurations = {
       "michael@x570" = hm.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
