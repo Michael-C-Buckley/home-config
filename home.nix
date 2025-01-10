@@ -1,4 +1,4 @@
-{ ... }:
+{ lib, ... }:
 
 {
   imports = [
@@ -11,6 +11,7 @@
   home = {
     username = "michael";
     homeDirectory = "/home/michael";
+    stateVersion = lib.mkDefault "24.05";
   };
 
   # home.file = {
