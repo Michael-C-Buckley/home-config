@@ -1,6 +1,6 @@
 # Hyprland Input
 
-{ config, ... }:
+{ ... }:
 
 {
   config.wayland.windowManager.hyprland.settings.input = {

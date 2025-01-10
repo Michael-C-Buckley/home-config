@@ -1,5 +1,3 @@
-# VSCode Home Manager Configuration
-
 { pkgs, ... }:
 
 {

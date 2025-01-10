@@ -1,5 +1,4 @@
 { pkgs, unstablePkgs, ... }:
-
 let
   regularPkgList = with pkgs; [
     # System Utilities

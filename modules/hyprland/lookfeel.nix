@@ -1,6 +1,6 @@
 # Hyprland Look and Feel Section
 
-{ config, ... }:
+{ ... }:
 
 {
   config.wayland.windowManager.hyprland.settings.general = {

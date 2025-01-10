@@ -1,6 +1,6 @@
 # Hyprland Binds
 
-{ config, lib, ... }:
+{ lib, ... }:
 
 let
 

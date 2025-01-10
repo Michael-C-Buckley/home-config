@@ -14,13 +14,9 @@
     };
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    home-manager,
-    ...
-  } @ inputs: let
+  outputs = {self, ...} @ inputs: let
     system = "x86_64-linux";
+    hm = inputs.home-manager;
 
     getPkgs = {
       nixpkgs,
@@ -32,7 +28,7 @@
       };
 
     pkgs = getPkgs {
-      nixpkgs = nixpkgs;
+      nixpkgs = inputs.nixpkgs;
       system = system;
     };
     unstablePkgs = getPkgs {
@@ -41,27 +37,27 @@
     };
   in {
     homeConfigurations = {
-      "michael@x570" = home-manager.lib.homeManagerConfiguration {
+      "michael@x570" = hm.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = pkgs;
         modules = [
           ./home.nix
           ./hosts/x570.nix
         ];
       };
 
-      "michael@t14" = home-manager.lib.homeManagerConfiguration {
+      "michael@t14" = hm.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = pkgs;
         modules = [
           ./home.nix
           ./hosts/t14.nix
         ];
       };
 
-      "michael" = home-manager.lib.homeManagerConfiguration {
+      "michael" = hm.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
-        pkgs = import nixpkgs {inherit system;};
+        pkgs = pkgs;
         modules = [
           ./home.nix
         ];

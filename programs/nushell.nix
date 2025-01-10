@@ -1,9 +1,8 @@
-{ shellAliases, ... }:
+{ ... }:
 
 {
   programs.nushell = {
     enable = true;
-    shellAliases = shellAliases;
     extraConfig = ''
       use ~/.cache/starship/init.nu
 
