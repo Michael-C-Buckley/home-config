@@ -64,5 +64,16 @@
         ];
       };
     };
+    modules = {
+      default = import ./home.nix;
+      x570 = inputs.nixpkgs.lib.mkMerge [
+        (import ./home.nix)
+        (import ./hosts/x570.nix)
+      ];
+      t14 = inputs.nixpkgs.lib.mkMerge [
+        (import ./home.nix)
+        (import ./hosts/t14.nix)
+      ];
+    };
   };
 }
