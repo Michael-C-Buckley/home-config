@@ -6,6 +6,6 @@
     ../packages/graphical.nix
     ../packages/productivity.nix
     ../programs/zsh
-    ../programs/zsh/geometry.nix
+    # ../programs/zsh/geometry.nix
   ];
 }
