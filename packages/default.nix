@@ -1,6 +1,6 @@
-{unstablePkgs, geometry, system, ...}: {
+{unstablePkgs, inputs, system, ...}: {
   home.packages = with unstablePkgs; [
-    geometry.packages.${system}
+    inputs.geometry.packages.${system}
     git
     tig
     curl

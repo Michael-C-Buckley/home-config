@@ -45,19 +45,19 @@
   in {
     homeConfigurations = {
       "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system geometry;};
+        extraSpecialArgs = {inherit inputs unstablePkgs system;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix ./hosts/x570.nix];
       };
 
       "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system geometry;};
+        extraSpecialArgs = {inherit inputs unstablePkgs system;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix ./hosts/t14.nix];
       };
 
       "michael" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system geometry;};
+        extraSpecialArgs = {inherit inputs unstablePkgs system;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix];
       };
