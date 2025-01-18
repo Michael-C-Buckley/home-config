@@ -60,7 +60,6 @@
     nixosModules = {
       x570 = {...}: {
         imports = [
-          inputs.home-manager.nixosModules.home-manager
           ./home.nix
           ./hosts/x570.nix
         ];
@@ -68,7 +67,6 @@
 
       t14 = {...}: {
         imports = [
-          inputs.home-manager.nixosModules.home-manager
           ./home.nix
           ./hosts/t14.nix
         ];
@@ -76,7 +74,6 @@
 
       default = {...}: {
         imports = [
-          inputs.home-manager.nixosModules.home-manager
           ./home.nix
         ];
       };
