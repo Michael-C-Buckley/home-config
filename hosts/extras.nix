@@ -1,4 +1,4 @@
-{inputs, ...}: {
+{...}: {
   # File containing all the extra modules I've created
   imports = [
     ../modules/development.nix

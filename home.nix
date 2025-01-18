@@ -1,9 +1,7 @@
-{lib, inputs, ...}: {
+{lib, ...}: {
   imports = [
-    inputs.hjem.nixosModules.default
     ./packages
     ./programs
-    ./files
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -12,15 +10,6 @@
     username = "michael";
     homeDirectory = "/home/michael";
     stateVersion = lib.mkDefault "24.05";
-  };
-
-  hjem = {
-    clobberByDefault = true;
-    users.michael = {
-      enable = true;
-      user = "michael";
-      directory = "/home/michael";
-    };
   };
 
   home.sessionVariables = {
