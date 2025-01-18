@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ../modules/hyperland
+    ../modules/hyprland
     ../modules/hyprland/hosts/t14.nix
     ../modules/graphics.nix
     ../files/desktop.nix
