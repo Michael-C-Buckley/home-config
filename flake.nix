@@ -20,7 +20,7 @@
     };
   };
 
-  outputs = {self, ...} @ inputs: let
+  outputs = {self, geometry, ...} @ inputs: let
     system = "x86_64-linux";
     hmConfig = inputs.home-manager.lib.homeManagerConfiguration;
 
@@ -45,19 +45,19 @@
   in {
     homeConfigurations = {
       "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system;};
+        extraSpecialArgs = {inherit inputs unstablePkgs system geometry;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix ./hosts/x570.nix];
       };
 
       "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system;};
+        extraSpecialArgs = {inherit inputs unstablePkgs system geometry;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix ./hosts/t14.nix];
       };
 
       "michael" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system;};
+        extraSpecialArgs = {inherit inputs unstablePkgs system geometry;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix];
       };
