@@ -1,7 +1,5 @@
-{ unstablePkgs, ... }:
-{
-
-  imports = [ ../programs/vscode.nix ];
+{unstablePkgs, ...}: {
+  imports = [../programs/vscode.nix];
 
   home.packages = with unstablePkgs; [
     devenv

@@ -1,6 +1,5 @@
-{ pkgs, ... }:
-{
-  imports = [ ./hyprland/default.nix ];
+{pkgs, ...}: {
+  imports = [./hyprland/default.nix];
   wayland.windowManager.hyprland.enable = true;
 
   gtk = {
@@ -27,11 +26,11 @@
   };
 
   xdg.mimeApps.defaultApplications = {
-    "text/plain" = [ "neovide.desktop" ];
-    "application/pdf" = [ "zathura.desktop" ];
-    "image/*" = [ "sxiv.desktop" ];
-    "video/png" = [ "mpv.desktop" ];
-    "video/jpg" = [ "mpv.desktop" ];
-    "video/*" = [ "mpv.desktop" ];
+    "text/plain" = ["neovide.desktop"];
+    "application/pdf" = ["zathura.desktop"];
+    "image/*" = ["sxiv.desktop"];
+    "video/png" = ["mpv.desktop"];
+    "video/jpg" = ["mpv.desktop"];
+    "video/*" = ["mpv.desktop"];
   };
 }

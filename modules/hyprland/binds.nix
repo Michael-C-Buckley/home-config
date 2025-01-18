@@ -1,9 +1,5 @@
 # Hyprland Binds
-
-{ lib, ... }:
-
-let
-
+{lib, ...}: let
   workspaces = [
     "$mod, 1, workspace, 1"
     "$mod, 2, workspace, 2"
@@ -66,10 +62,7 @@ let
     # Waybar Control
     "$mod, B, exec, pkill -f waybar && waybar &"
   ];
-
-in
-
-{
+in {
   config.wayland.windowManager.hyprland.settings.bind =
     [
       "$mod, W, exec, rofi -show drun -show-icons"

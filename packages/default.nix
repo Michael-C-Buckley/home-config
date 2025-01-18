@@ -1,5 +1,4 @@
-{ unstablePkgs, ... }:
-{
+{unstablePkgs, ...}: {
   imports = [
     ./custom/geometry.nix
   ];

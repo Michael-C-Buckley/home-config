@@ -1,5 +1,8 @@
-{ pkgs, unstablePkgs, ... }:
-let
+{
+  pkgs,
+  unstablePkgs,
+  ...
+}: let
   regularPkgList = with pkgs; [
     # System Utilities
     networkmanagerapplet
@@ -32,7 +35,6 @@ let
     wireshark
     ghostty
   ];
-in
-{
+in {
   home.packages = regularPkgList ++ unstablePkgList;
 }

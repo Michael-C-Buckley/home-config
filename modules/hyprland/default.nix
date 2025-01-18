@@ -1,8 +1,5 @@
 # Hpyrland Config
-
-{ pkgs, ... }:
-
-{
+{pkgs, ...}: {
   imports = [
     ./binds.nix
     ./lookfeel.nix

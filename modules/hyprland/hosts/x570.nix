@@ -1,15 +1,10 @@
 # X570 Hyprland via Home-Manager
-
-{ ... }:
-
-let
+{...}: let
   # Main Innoncn Ultrawide
   mon1 = "DP-1";
   # Right 24
   mon2 = "HDMI-A-2";
-in
-
-{
+in {
   wayland.windowManager.hyprland.settings = {
     monitor = [
       "${mon1},3440x1440@144.00,0x0,1"

@@ -1,7 +1,5 @@
 # Waybar Common Settings
-
 # This is a set merged later under `programs.waybar.settings`
-
 {
   layer = "top";
   margin-bottom = -5;

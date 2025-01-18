@@ -1,5 +1,4 @@
-{ hjem, ... }:
-{
+{hjem, ...}: {
   imports = [
     hjem.nixosModules.default
     ./zsh

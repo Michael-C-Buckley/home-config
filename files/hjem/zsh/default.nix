@@ -1,4 +1,4 @@
-{ pkgs, ...}: let
+{pkgs, ...}: let
   geometry-zsh = pkgs.fetchFromGitHub {
     owner = "geometry-zsh";
     repo = "geometry";

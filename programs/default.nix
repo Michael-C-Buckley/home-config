@@ -1,10 +1,14 @@
-{ platform, ... }:
-let
+{platform, ...}: let
   graphicImports = [
     ./vscode.nix
     ./waybar/default.nix
   ];
-in
-{
-  imports = [ ./nushell.nix ] ++ (if (platform != "server") then graphicImports else [ ]);
+in {
+  imports =
+    [./nushell.nix]
+    ++ (
+      if (platform != "server")
+      then graphicImports
+      else []
+    );
 }

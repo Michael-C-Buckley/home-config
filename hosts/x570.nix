@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   imports = [
     ../modules/hyprland/hosts/x570.nix
     ../modules/graphics.nix

@@ -1,6 +1,5 @@
 # Whiteshadow's Waybar
 # Adapted from: https://github.com/elifouts/Dotfiles/tree/6df11f34f21bd04e9f0a7ec4f54bb87222f77a9d/waybar
-
 {
   layer = "top";
   margin-bottom = -5;
@@ -11,7 +10,7 @@
     "clock"
     "tray"
   ];
-  modules-center = [ "hyprland/workspaces" ];
+  modules-center = ["hyprland/workspaces"];
   modules-right = [
     "group/expand"
     "bluetooth"

@@ -1,7 +1,5 @@
 # Geometry Zsh Prompt
-
-{ pkgs, ...}:
-{
+{pkgs, ...}: {
   home.packages = [
     (pkgs.fetchFromGitHub {
       owner = "geometry-zsh";

@@ -1,8 +1,5 @@
 # Hyprland Look and Feel Section
-
-{ ... }:
-
-{
+{...}: {
   config.wayland.windowManager.hyprland.settings.general = {
     # https://wiki.hyprland.org/Configuring/Variables/#general
     gaps_in = 5;

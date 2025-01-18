@@ -1,7 +1,5 @@
 # Waybar Options for Laptops
-
 # This is a set merged later under `programs.waybar.settings`
-
 {
   # Laptops overwrite the standard edition with new options
   # Additions: backlight, battery

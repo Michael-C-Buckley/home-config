@@ -1,14 +1,9 @@
 # Waybar Home Configuration
-
-{ platform, ... }:
-
-let
+{platform, ...}: let
   commonSettings = import ./common.nix;
   laptopOptions = import ./laptop.nix;
   newOptions = import ./whiteshadow.nix;
-in
-
-{
+in {
   programs.waybar = {
     enable = platform != "server";
     # style = ./style.css;

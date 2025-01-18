@@ -1,8 +1,5 @@
 # Hyprland Input
-
-{ ... }:
-
-{
+{...}: {
   config.wayland.windowManager.hyprland.settings.input = {
     # https://wiki.hyprland.org/Configuring/Variables/#input
     kb_layout = "us";
