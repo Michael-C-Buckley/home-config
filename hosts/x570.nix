@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ../modules/hyperland
     ../modules/hyprland/hosts/x570.nix
     ../modules/graphics.nix
     ./extras.nix

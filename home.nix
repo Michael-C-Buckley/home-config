@@ -2,6 +2,7 @@
   imports = [
     ./packages
     ./programs
+    ./files/minimal.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
