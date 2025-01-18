@@ -1,8 +1,9 @@
-{lib, ...}: {
+{lib, inputs, ...}: {
   imports = [
+    inputs.hjem.nixosModules.default
     ./packages
     ./programs
-    ./files/minimal.nix
+    ./files
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -13,30 +14,14 @@
     stateVersion = lib.mkDefault "24.05";
   };
 
-  # home.file = {
-  #   "config/ghostty/config" = {
-  #     text = ''
-
-  #     ''
-  #   };
-  # };
-
-  # Home Manager can also manage your environment variables through
-  # 'home.sessionVariables'. These will be explicitly sourced when using a
-  # shell provided by Home Manager. If you don't want to manage your shell
-  # through Home Manager then you have to manually source 'hm-session-vars.sh'
-  # located at either
-  #
-  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
-  #
-  # or
-  #
-  #  /etc/profiles/per-user/michael/etc/profile.d/hm-session-vars.sh
-  #
+  hjem = {
+    clobberByDefault = true;
+    users.michael = {
+      enable = true;
+      user = "michael";
+      directory = "/home/michael";
+    };
+  };
 
   home.sessionVariables = {
     EDITOR = "nvim";
