@@ -1,10 +1,10 @@
-{unstablePkgs, inputs, system, ...}:
+{pkgs, unstablePkgs, ...}:
 let
   unstablePkgList = with unstablePkgs; [
     lla # Not in 24.11 yet
   ];
 in {
-  home.packages = with unstablePkgs; [
+  home.packages = with pkgs; [
     git
     tig
     curl
@@ -17,8 +17,5 @@ in {
     fd
     fzf
     zoxide
-
-    # Each source flake will need geometry in the inputs
-    inputs.geometry.packages.${system}
   ] ++ unstablePkgList;
 }
