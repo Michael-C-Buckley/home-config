@@ -8,15 +8,15 @@
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    wfetch = {
-      url = "github:iynaix/wfetch";
+    hjem = {
+      url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
   };
 
   outputs = {self, ...} @ inputs: let
     system = "x86_64-linux";
-    hm = inputs.home-manager;
+    hmConfig = inputs.home-manager.lib.homeManagerConfiguration;
 
     getPkgs = {
       nixpkgs,
@@ -36,9 +36,8 @@
       system = system;
     };
   in {
-    path = self;
-    homeConfigurations = {
-      "michael@x570" = hm.lib.homeManagerConfiguration {
+    homeManager.configurations = {
+      "michael@x570" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         pkgs = pkgs;
         modules = [
@@ -47,7 +46,7 @@
         ];
       };
 
-      "michael@t14" = hm.lib.homeManagerConfiguration {
+      "michael@t14" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         pkgs = pkgs;
         modules = [
@@ -56,7 +55,7 @@
         ];
       };
 
-      "michael" = hm.lib.homeManagerConfiguration {
+      "michael" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         pkgs = pkgs;
         modules = [
