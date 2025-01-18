@@ -24,55 +24,70 @@
     }:
       import nixpkgs {
         system = system;
-        config = {allowUnfree = true;};
+        config.allowUnfree = true;
       };
 
     pkgs = getPkgs {
       nixpkgs = inputs.nixpkgs;
       system = system;
     };
+
     unstablePkgs = getPkgs {
       nixpkgs = inputs.nixpkgs-unstable;
       system = system;
     };
+
+    baseHome = import ./home.nix;
+    homeX570 = inputs.nixpkgs.lib.mkMerge [
+      baseHome
+      (import ./hosts/x570.nix)
+    ];
+    homeT14 = inputs.nixpkgs.lib.mkMerge [
+      baseHome
+      (import ./hosts/t14.nix)
+    ];
   in {
     homeConfigurations = {
       "michael@x570" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
-        pkgs = pkgs;
-        modules = [
-          ./home.nix
-          ./hosts/x570.nix
-        ];
+        inherit pkgs;
+        modules = [homeX570];
       };
 
       "michael@t14" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
-        pkgs = pkgs;
-        modules = [
-          ./home.nix
-          ./hosts/t14.nix
-        ];
+        inherit pkgs;
+        modules = [homeT14];
       };
 
       "michael" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
-        pkgs = pkgs;
-        modules = [
-          ./home.nix
-        ];
+        inherit pkgs;
+        modules = [baseHome];
       };
     };
-    modules = {
-      default = import ./home.nix;
-      x570 = inputs.nixpkgs.lib.mkMerge [
-        (import ./home.nix)
-        (import ./hosts/x570.nix)
-      ];
-      t14 = inputs.nixpkgs.lib.mkMerge [
-        (import ./home.nix)
-        (import ./hosts/t14.nix)
-      ];
+
+    nixosModules = {
+      x570 = {config, ...}: {
+        imports = [
+          inputs.home-manager.nixosModules.home-manager
+          homeX570
+        ];
+      };
+
+      t14 = {config, ...}: {
+        imports = [
+          inputs.home-manager.nixosModules.home-manager
+          homeT14
+        ];
+      };
+
+      default = {config, ...}: {
+        imports = [
+          inputs.home-manager.nixosModules.home-manager
+          baseHome
+        ];
+      };
     };
   };
 }
