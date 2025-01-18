@@ -1,7 +1,4 @@
 { pkgs, ... }:
-let
-  gruvboxPlus = import ./../pkgs/custom/gruvbox-plus.nix { inherit pkgs; };
-in
 {
   imports = [ ./hyprland/default.nix ];
   wayland.windowManager.hyprland.enable = true;
