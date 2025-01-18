@@ -1,9 +1,9 @@
-{inputs, system, ...}:
+{...}:
 {
   hjem.users.michael = {
     files = {
-      ".config/resources/geometry".source = "${inputs.geometry.packages.${system}}";
       ".zshrc".source = ./default.zshrc;
+      ".config/zsh/geometry/myGeometry.zsh".sources = ./myGeometry.zsh;
     };
   };
 }

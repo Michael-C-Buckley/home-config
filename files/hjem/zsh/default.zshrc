@@ -13,22 +13,11 @@ export VISUAL="nvim"
 export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
-# -----------------------------
-# Geometry Zsh Prompt
-# -----------------------------
 
-# Source the Geometry Zsh prompt
-export PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-export PROMPT_GEOMETRY_EXEC_TIME=true
-export GEOMETRY_TIME_NEUTRAL='yellow'
-export GEOMETRY_PLUGIN_SEPARATOR=' '
-
-export GEOMETRY_PROMPT=(geometry_status geometry_path)
-export GEOMETRY_PROMPT_PLUGINS_PRIMARY=(path hostname)
-export GEOMETRY_PROMPT_PLUGINS_SECONDARY=(exec_time git)
-GEOMETRY_SYMBOL_PROMPT="▲"
-source "$HOME/.config/resources/geometry.zsh"
-export GEOMETRY_COLOR_HOSTNAME="$(geometry::hostcolor)"
+# -----------------------------
+# Geometry Entry
+# -----------------------------
+source "$HOME/.config/zsh/geometry/myGeometry.zsh"
 
 # -----------------------------
 # Zsh Options
@@ -64,6 +53,12 @@ alias gco='git checkout'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
+
+# Kubernetes
+alias k='kubectl'
+
+# Nu/Nushell
+alias n ='nu -c'
 
 # -----------------------------
 # Plugins and Frameworks

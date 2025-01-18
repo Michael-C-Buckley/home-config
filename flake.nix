@@ -5,11 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
     nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
-    geometry = {
-      url = "github:Michael-C-Buckley/geometry-flake";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -20,7 +15,7 @@
     };
   };
 
-  outputs = {self, geometry, ...} @ inputs: let
+  outputs = {self, ...} @ inputs: let
     system = "x86_64-linux";
     hmConfig = inputs.home-manager.lib.homeManagerConfiguration;
 
@@ -45,19 +40,19 @@
   in {
     homeConfigurations = {
       "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system;};
+        extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix ./hosts/x570.nix];
       };
 
       "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system;};
+        extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix ./hosts/t14.nix];
       };
 
       "michael" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs system;};
+        extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
         home-manager.users.michael.imports = [./home.nix];
       };
