@@ -36,56 +36,48 @@
       nixpkgs = inputs.nixpkgs-unstable;
       system = system;
     };
-
-    baseHome = import ./home.nix;
-    homeX570 = inputs.nixpkgs.lib.mkMerge [
-      baseHome
-      (import ./hosts/x570.nix)
-    ];
-    homeT14 = inputs.nixpkgs.lib.mkMerge [
-      baseHome
-      (import ./hosts/t14.nix)
-    ];
   in {
     homeConfigurations = {
       "michael@x570" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
-        modules = [homeX570];
+        modules = [ ./home.nix ./hosts/x570.nix ];
       };
 
       "michael@t14" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
-        modules = [homeT14];
+        modules = [ ./home.nix ./hosts/t14.nix ];
       };
 
       "michael" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
-        modules = [baseHome];
+        modules = [ ./home.nix ];
       };
     };
 
     nixosModules = {
-      x570 = {config, ...}: {
+      x570 = {...}: {
         imports = [
           inputs.home-manager.nixosModules.home-manager
-          homeX570
+          ./home.nix
+          ./hosts/x570.nix
         ];
       };
 
-      t14 = {config, ...}: {
+      t14 = {...}: {
         imports = [
           inputs.home-manager.nixosModules.home-manager
-          homeT14
+          ./home.nix
+          ./hosts/t14.nix
         ];
       };
 
-      default = {config, ...}: {
+      default = {...}: {
         imports = [
           inputs.home-manager.nixosModules.home-manager
-          baseHome
+          ./home.nix
         ];
       };
     };
