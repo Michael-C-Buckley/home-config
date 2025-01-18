@@ -17,8 +17,8 @@ in
       package = pkgs.bibata-cursors;
     };
     iconTheme = {
-      name = "GruvboxPlus";
-      package = gruvboxPlus;
+      name = "Gruvbox Dark";
+      package = pkgs.gruvbox-dark-icons-gtk;
     };
   };
 
