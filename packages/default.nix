@@ -1,9 +1,9 @@
 { pkgs, ... }:
 {
-  modules = [
+  imports = [
     ./custom/geometry.nix
   ];
-  
+
   home.packages = with pkgs; [
     git
     tig
