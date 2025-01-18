@@ -1,9 +1,10 @@
-{unstablePkgs, ...}: {
-  imports = [
-    ./custom/geometry.nix
-  ];
+{unstablePkgs, inputs, system, ...}: {
+  # imports = [
+  #   ./custom/geometry.nix
+  # ];
 
   home.packages = with unstablePkgs; [
+    inputs.geometry.packages.${system}
     git
     tig
     curl

@@ -1,5 +1,25 @@
 {
   "nodes": {
+    "geometry": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1737215634,
+        "narHash": "sha256-oezFN0MyJG1wiIjTopWFwynVrKDQKfQ/pK2qqrYXmC8=",
+        "owner": "Michael-C-Buckley",
+        "repo": "geometry-flake",
+        "rev": "ad82d2a2a4485b069cb7752f74d5316eb22acf8f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "Michael-C-Buckley",
+        "repo": "geometry-flake",
+        "type": "github"
+      }
+    },
     "hjem": {
       "inputs": {
         "nixpkgs": [
@@ -75,6 +95,7 @@
     },
     "root": {
       "inputs": {
+        "geometry": "geometry",
         "hjem": "hjem",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
