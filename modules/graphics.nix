@@ -1,6 +1,5 @@
 {pkgs, ...}: {
   imports = [./hyprland/default.nix];
-  wayland.windowManager.hyprland.enable = true;
 
   gtk = {
     enable = true;
