@@ -58,7 +58,7 @@ alias gp='git push'
 alias k='kubectl'
 
 # Nu/Nushell
-alias n ='nu -c'
+alias n='nu -c'
 
 # -----------------------------
 # Plugins and Frameworks
