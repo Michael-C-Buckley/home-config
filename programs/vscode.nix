@@ -1,6 +1,6 @@
-{pkgs, ...}: {
+{config, pkgs, ...}: {
   programs.vscode = {
-    enable = true;
+    enable = config.features.vscode.enable;
     # package = pkgs.vscodium;
     extensions = with pkgs.vscode-extensions; [
       # Utilities/General
@@ -13,6 +13,12 @@
       formulahendry.auto-rename-tag # Matches XML tags while editting
       alefragnani.bookmarks
       redhat.ansible
+
+      # Themes
+      teabyii.ayu
+      huytd.nord-light
+      arcticicestudio.nord-visual-studio-code
+      enkia.tokyo-night
 
       # Python
       ms-python.python
