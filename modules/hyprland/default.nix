@@ -1,5 +1,8 @@
 # Hpyrland Config
-{pkgs, ...}: {
+{config, pkgs, ...}: {
+
+  wayland.windowManager.hyprland.enable = config.features.hyprland.enable;
+
   imports = [
     ./binds.nix
     ./lookfeel.nix
