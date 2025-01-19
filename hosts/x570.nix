@@ -7,4 +7,9 @@
     ./extras.nix
   ];
   home.stateVersion = "24.05";
+
+  features = {
+    vscode.enable = true;
+    waybar.enable = true;
+  };
 }

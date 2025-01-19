@@ -1,5 +1,6 @@
 {lib, ...}: {
   imports = [
+    ./options/features.nix
     ./packages
     ./programs
     ./files

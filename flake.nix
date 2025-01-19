@@ -44,19 +44,19 @@
       "michael@x570" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
-        home-manager.users.michael.imports = [./home.nix ./hosts/x570.nix];
+        modules = [./home.nix ./hosts/x570.nix];
       };
 
       "michael@t14" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
-        home-manager.users.michael.imports = [./home.nix ./hosts/t14.nix];
+        modules = [./home.nix ./hosts/t14.nix];
       };
 
       "michael" = hmConfig {
         extraSpecialArgs = {inherit inputs unstablePkgs;};
         inherit pkgs;
-        home-manager.users.michael.imports = [./home.nix];
+        modules = [./home.nix];
       };
     };
 

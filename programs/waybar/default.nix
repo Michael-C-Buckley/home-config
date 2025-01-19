@@ -1,11 +1,13 @@
 # Waybar Home Configuration
-{platform, ...}:
-{
+{config, lib, ...}:
+let
+  enabled = config.features.waybar.enable;
+in {
   programs.waybar = {
-    enable = platform != "server";
+    enable = enabled;
   };
 
-  home.file = {
+  home.file = lib.mkIf enabled {
     ".config/waybar/config" = {
       source = ./configs/config;
     };
