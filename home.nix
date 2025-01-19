@@ -2,6 +2,7 @@
   imports = [
     ./packages
     ./programs
+    ./files
   ];
 
   nixpkgs.config.allowUnfree = true;
