@@ -3,7 +3,7 @@
     ./zsh
   ];
 
-  hjem.users.michael.files = {
+  home.file = {
     ".gitconfig".source = ./userfiles/.gitconfig;
   };
 }
