@@ -7,6 +7,7 @@ if [ ! -d "$GEOMETRY_DIR" ]; then
     echo "Failed to clone geometry-zsh. Falling back to default shell settings."
     return
   }
+fi
 
 # Apply it
 if [ -f "$GEOMETRY_DIR/geometry.zsh" ]; then
@@ -20,15 +21,4 @@ fi
 # Geometry Zsh Prompt
 # -----------------------------
 
-# Source the Geometry Zsh prompt
-export PROMPT_GEOMETRY_COLORIZE_SYMBOL=true
-export PROMPT_GEOMETRY_EXEC_TIME=true
-export GEOMETRY_TIME_NEUTRAL='yellow'
-export GEOMETRY_PLUGIN_SEPARATOR=' '
-
-export GEOMETRY_PROMPT=(geometry_status geometry_path)
-export GEOMETRY_PROMPT_PLUGINS_PRIMARY=(path hostname)
-export GEOMETRY_PROMPT_PLUGINS_SECONDARY=(exec_time git)
-GEOMETRY_SYMBOL_PROMPT="▲"
-source "$HOME/.config/resources/geometry.zsh"
-export GEOMETRY_COLOR_HOSTNAME="$(geometry::hostcolor)"
+# WIP
