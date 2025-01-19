@@ -2,8 +2,10 @@
   description = "Home Configs for Michael";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-24.11";
-    nixpkgs-unstable.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    # I'm using Cosmic and pinning their inputs for Cachix hits
+    cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixpkgs.follows = "cosmic/nixpkgs-stable";
+    nixpkgs-unstable.follows = "cosmic/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
