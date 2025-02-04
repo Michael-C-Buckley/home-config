@@ -60,6 +60,10 @@ alias k='kubectl'
 # Nu/Nushell
 alias n='nu -c'
 
+# ZFS
+alias zls='zfs list -o name,used,compressratio,lused,avail'
+alias zsls='zfs list -t snapshot -S creation -o name,creation,used,written,refer'
+
 # -----------------------------
 # Plugins and Frameworks
 # -----------------------------
