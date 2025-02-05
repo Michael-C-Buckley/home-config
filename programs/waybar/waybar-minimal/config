@@ -1,7 +1,7 @@
 {
   "layer": "top", "position": "top",
-  "modules-left": ["clock",  "custom/powerDraw", "hyprland/window", "tray" ],
-  "modules-center": [  "hyprland/workspaces"],
+  "modules-left": ["custom/powerDraw", "hyprland/window", "tray" ],
+  "modules-center": ["clock"],
   "modules-right": ["custom/clipboard", "backlight", "idle_inhibitor", "custom/colorpicker", "bluetooth", "pulseaudio", "network",  "battery" ],
   "reload_style_on_change":true,
 
