@@ -25,9 +25,9 @@ in {
       "waybar &"
       "dunst &"
       "gammastep -l 36:-78 -t 6500k:1800k"
-      "[workspace special:magic1 silent] $terminal"
-      "[workspace special:magic2 silent] signal-desktop"
-      "[workspace special:magic2 silent] kotatogram-desktop"
+      "[workspace 5 silent] $terminal"
+      "[workspace 6 silent] signal-desktop"
+      "[workspace 6 silent] kotatogram-desktop"
     ];
   };
 }
