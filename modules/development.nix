@@ -1,7 +1,7 @@
-{unstablePkgs, ...}: {
+{pkgs, ...}: {
   imports = [../programs/vscode.nix];
 
-  home.packages = with unstablePkgs; [
+  home.packages = with pkgs; [
     devenv
     python3
     zed-editor

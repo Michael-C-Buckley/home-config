@@ -4,16 +4,15 @@
   inputs = {
     # I'm using Cosmic and pinning their inputs for Cachix hits
     cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixpkgs.follows = "cosmic/nixpkgs-stable";
-    nixpkgs-unstable.follows = "cosmic/nixpkgs";
+    nixpkgs.follows = "cosmic/nixpkgs";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     hjem = {
       url = "github:feel-co/hjem";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
@@ -34,27 +33,22 @@
       nixpkgs = inputs.nixpkgs;
       system = system;
     };
-
-    unstablePkgs = getPkgs {
-      nixpkgs = inputs.nixpkgs-unstable;
-      system = system;
-    };
   in {
     homeConfigurations = {
       "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs;};
+        extraSpecialArgs = {inherit inputs;};
         inherit pkgs;
         modules = [./home.nix ./hosts/x570.nix];
       };
 
       "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs;};
+        extraSpecialArgs = {inherit inputs;};
         inherit pkgs;
         modules = [./home.nix ./hosts/t14.nix];
       };
 
       "michael" = hmConfig {
-        extraSpecialArgs = {inherit inputs unstablePkgs;};
+        extraSpecialArgs = {inherit inputs;};
         inherit pkgs;
         modules = [./home.nix];
       };

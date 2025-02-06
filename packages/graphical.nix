@@ -1,14 +1,11 @@
-{
-  pkgs,
-  unstablePkgs,
-  ...
-}: let
-  regularPkgList = with pkgs; [
+{pkgs, ...}: {
+  home.packages = with pkgs; [
     # System Utilities
     networkmanagerapplet
     cpu-x
     pavucontrol # Pulse Volume control
     gammastep
+    wireshark
 
     # Desktop
     xfce.thunar
@@ -29,12 +26,6 @@
     # Productivity
     kdePackages.kalgebra # Calculator
     neovide # Nvim GUI
-  ];
-
-  unstablePkgList = with unstablePkgs; [
-    wireshark
     ghostty
   ];
-in {
-  home.packages = regularPkgList ++ unstablePkgList;
 }

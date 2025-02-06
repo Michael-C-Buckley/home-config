@@ -1,12 +1,8 @@
-{pkgs, unstablePkgs, ...}:
-let
-  unstablePkgList = with unstablePkgs; [
-    lla # Not in 24.11 yet
-  ];
-in {
+{pkgs, ...}: {
   home.packages = with pkgs; [
     git
     tig
+    lla
     curl
     wget
     bat
@@ -17,5 +13,5 @@ in {
     fd
     fzf
     zoxide
-  ] ++ unstablePkgList;
+  ];
 }
