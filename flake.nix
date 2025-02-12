@@ -2,36 +2,36 @@
   description = "Home Configs for Michael";
 
   inputs = {
-    # I'm using Cosmic and pinning their inputs for Cachix hits
-    cosmic.url = "github:lilyinstarlight/nixos-cosmic";
-    nixpkgs.follows = "cosmic/nixpkgs";
+    # Follow my system for deduplication
+    system-flake = {
+      url = "github:Michael-C-Buckley/nixos-system";
+      # Remove unneeded inputs
+      inputs = {
+        wfetch.follows = "";
+        agenix.follows = "";
+        vscode-server.follows = "";
+      };
+    };
+
+    nixpkgs.follows = "system-flake/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     hjem = {
       url = "github:feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = {self, ...} @ inputs: let
+  outputs = {self, nixpkgs, ...} @ inputs: let
     system = "x86_64-linux";
     hmConfig = inputs.home-manager.lib.homeManagerConfiguration;
-
-    getPkgs = {
-      nixpkgs,
-      system,
-    }:
-      import nixpkgs {
-        system = system;
-        config.allowUnfree = true;
-      };
-
-    pkgs = getPkgs {
-      nixpkgs = inputs.nixpkgs;
-      system = system;
+    pkgs = import nixpkgs {
+      inherit system;
+      config.allowUnfree = true;
     };
   in {
     homeConfigurations = {
@@ -54,6 +54,8 @@
       };
     };
 
+    # The home configuration can be imported directly into a config as to become module-based
+    # CAUTION: Inputs will need to be defined in the system-flake if going this route
     nixosModules = {
       x570 = {...}: {
         imports = [
