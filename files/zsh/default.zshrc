@@ -5,14 +5,7 @@
 # Add custom paths to $PATH
 # export PATH="$HOME/bin:$PATH"
 
-# Set the default editor
-export EDITOR="nvim"
-export VISUAL="nvim"
-
-# Locale settings
-export LANG="en_US.UTF-8"
-export LC_ALL="en_US.UTF-8"
-
+source "$HOME/.config/shells/environment.sh"
 
 # -----------------------------
 # Geometry Entry
@@ -40,29 +33,8 @@ SAVEHIST=10000
 # Aliases
 # -----------------------------
 
-# Common aliases
-alias ll='ls -alF'       # Detailed list with classification
-alias la='ls -A'         # List all except `.` and `..`
-alias l='ls -CF'         # Simple classified list
-alias ..='cd ..'
-alias ...='cd ../..'
-
-# Git aliases
-alias gst='git status'
-alias gco='git checkout'
-alias ga='git add'
-alias gc='git commit'
-alias gp='git push'
-
-# Kubernetes
-alias k='kubectl'
-
-# Nu/Nushell
-alias n='nu -c'
-
-# ZFS
-alias zls='zfs list -o name,used,compressratio,lused,avail'
-alias zsls='zfs list -t snapshot -S creation -o name,creation,used,written,refer'
+source "$HOME/.config/shells/aliases.sh"
+alias nix="noglob nix"
 
 # -----------------------------
 # Plugins and Frameworks
@@ -91,12 +63,6 @@ zstyle ':completion:*:default' list-colors ''
 # -----------------------------
 # Miscellaneous
 # -----------------------------
-
-# Enable color in `ls` and other commands
-export CLICOLOR=1
-export LSCOLORS="auto"
-export DIFF_COLOR=auto
-export IP_COLOR=always
 
 # Prevent duplicate prompt display
 export PROMPT_EOL_MARK=""

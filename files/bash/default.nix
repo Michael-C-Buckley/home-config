@@ -1,6 +1,6 @@
 { ... }:
 {
   home.file = {
-    ".bashrc".source = ./starship.bashrc;
+    ".bashrc".source = ./.bashrc;
   };
 }
