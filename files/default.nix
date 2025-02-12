@@ -1,7 +1,6 @@
 {...}: {
   home.file = {
     ".gitconfig".source = ./userfiles/.gitconfig;
-    ".config/ghostty/config".source = ./userfiles/ghostty;
 
     # Shell Common
     ".config/starship.toml".source = ./shells/starship.toml;
