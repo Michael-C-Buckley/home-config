@@ -13,5 +13,8 @@
     fd
     fzf
     zoxide
+
+    # Bash Line Editor - for Starship transient prompt
+    blesh
   ];
 }
