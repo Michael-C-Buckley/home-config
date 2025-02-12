@@ -43,28 +43,23 @@
       };
     };
 
-    # The home configuration can be imported directly into a config as to become module-based
-    # CAUTION: Inputs will need to be defined in the system-flake if going this route
     nixosModules = {
-      x570 = {...}: {
-        imports = [
-          ./home.nix
-          ./hosts/x570.nix
-        ];
-      };
+      # The home configuration can be imported directly into a config as to become module-based
+      # CAUTION: Inputs will need to be defined in the system-flake if going this route
+      home-manager = {
+        x570 = {...}: {
+          imports = [./home.nix ./hosts/x570.nix];
+        };
 
-      t14 = {...}: {
-        imports = [
-          ./home.nix
-          ./hosts/t14.nix
-        ];
-      };
+        t14 = {...}: {
+          imports = [./home.nix ./hosts/t14.nix];
+        };
 
-      default = {...}: {
-        imports = [
-          ./home.nix
-        ];
+        default = {...}: {
+          imports = [./home.nix];
+        };
       };
+      # hjem = {};
     };
   };
 }
