@@ -2,18 +2,7 @@
   description = "Home Configs for Michael";
 
   inputs = {
-    # Follow my system for deduplication
-    system-flake = {
-      url = "github:Michael-C-Buckley/nixos-system";
-      # Remove unneeded inputs
-      inputs = {
-        wfetch.follows = "";
-        agenix.follows = "";
-        vscode-server.follows = "";
-      };
-    };
-
-    nixpkgs.follows = "system-flake/nixpkgs";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager";
