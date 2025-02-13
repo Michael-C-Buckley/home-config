@@ -59,7 +59,9 @@
           imports = [./home.nix];
         };
       };
-      # hjem = {};
+      hjem.default = {...}: {
+        imports = [./hjem.nix];
+      };
     };
   };
 }
