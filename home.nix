@@ -1,9 +1,9 @@
 # Base Entry for Home-Manager
 {config, lib, ...}: {
   imports = [
-    ./options/features.nix
-    ./packages
     ./programs
+    ./options/features.nix
+    ./packages/home.nix
     ./files/home.nix
   ];
 
