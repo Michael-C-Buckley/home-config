@@ -1,10 +1,12 @@
 {pkgs, ...}: 
 with pkgs; [
-  starship
+  # Git/Web
   git
   tig
   curl
   wget
+
+  # Machine Utilites
   lla
   bat
   killall
@@ -15,6 +17,8 @@ with pkgs; [
   fzf
   zoxide
 
-  # Bash Line Editor - for Starship transient prompt
-  blesh
+  # Terminal/Prompt
+  blesh # Bash Line Editor - for Starship transient prompt
+  starship
+  direnv
 ]
