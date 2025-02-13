@@ -43,9 +43,9 @@
       };
     };
 
+    # nixosModules will not have access to the flake inputs here once imported elsehwere
+    # You will need to supply them, but can just follow them from this flake
     nixosModules = {
-      # The home configuration can be imported directly into a config as to become module-based
-      # CAUTION: Inputs will need to be defined in the system-flake if going this route
       home-manager = {
         x570 = {...}: {
           imports = [./home.nix ./hosts/x570.nix];
@@ -60,7 +60,7 @@
         };
       };
 
-      # Hjem will only provide dotfile linking
+      # Hjem will only provide dotfile linking and some user-space packages via NixOS options
       hjem.default = {...}: {
         imports = [./hjem.nix];
       };

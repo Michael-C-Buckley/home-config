@@ -13,3 +13,10 @@ I am currently using home-manager for declarative management on graphical, perso
 Hjem is a newer, simpler version of file linking.  Useful for providing only declarative and collected dotfile management without the overhead, complexity, and potential breakage that home-manager has.
 
 This implementation is primarily for my servers, where I don't have or need extensive applications and their configurations.
+
+## Credits
+
+Special thanks to those whose flakes have provided inspiration and I have used configurations from:
+
+[Arbel's Starship toml](https://forgejo.spacetime.technology/arbel/nixos)
+[Waybar Minimal](https://github.com/ashish-kus/waybar-minimal/tree/main)
