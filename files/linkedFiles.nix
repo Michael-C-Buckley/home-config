@@ -9,6 +9,7 @@
 
   # Bash
   ".bashrc".source = ./bash/.bashrc;
+  ".bash_profile".source = ./bash/.bash_profile;
 
   # Zsh
   ".zshrc".source = ./zsh/default.zshrc;
