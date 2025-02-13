@@ -59,6 +59,8 @@
           imports = [./home.nix];
         };
       };
+
+      # Hjem will only provide dotfile linking
       hjem.default = {...}: {
         imports = [./hjem.nix];
       };
