@@ -1,5 +1,4 @@
-{...}:
-{
+{...}: {
   imports =
     [
       ./nushell.nix
@@ -9,5 +8,4 @@
 
   # Starship
   programs.starship.enable = true;
-  home.file.".config/starship.toml".source = ../files/userfiles/starship.toml;
 }

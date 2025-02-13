@@ -1,9 +1,9 @@
-{lib, ...}: {
+{config, lib, ...}: {
   imports = [
     ./options/features.nix
     ./packages
     ./programs
-    ./files
+    ./files/home.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
