@@ -1,3 +1,4 @@
+# Base Entry for Home-Manager
 {config, lib, ...}: {
   imports = [
     ./options/features.nix
