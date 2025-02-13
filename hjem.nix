@@ -3,6 +3,7 @@
   imports = [
     inputs.hjem.nixosModules.default
     ./files/hjem.nix
+    ./packages/hjem.nix
   ];
 
   hjem = {
