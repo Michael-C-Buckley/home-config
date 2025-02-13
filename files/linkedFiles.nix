@@ -1,6 +1,6 @@
 {
   ".gitconfig".source = ./userfiles/.gitconfig;
-  "ghostty/config".source = ./userfiles/ghostty;
+  ".config/ghostty/config".source = ./userfiles/ghostty;
 
   # Shell Common
   ".config/starship.toml".source = ./shells/starship.toml;
