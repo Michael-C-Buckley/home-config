@@ -2,7 +2,9 @@
   description = "Home Configs for Michael";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
+    # My main system is tracking cosmic while it is in production for cachix hits
+    cosmic.url = "github:lilyinstarlight/nixos-cosmic";
+    nixpkgs.follows = "cosmic/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";

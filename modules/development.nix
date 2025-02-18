@@ -4,7 +4,7 @@
   home.packages = with pkgs; [
     devenv
     python3
-    zed-editor
+    # zed-editor # Cache miss on NixOS currently
     helix
     meld
     nixd
