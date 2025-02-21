@@ -3,9 +3,10 @@
 # -----------------------------
 
 # Common aliases
-alias ll='ls -alF'       # Detailed list with classification
-alias la='ls -A'         # List all except `.` and `..`
-alias l='ls -CF'         # Simple classified list
+alias ip='ip --color=auto' # Colorize IP output
+alias ll='ls -alF'         # Detailed list with classification
+alias la='ls -A'           # List all except `.` and `..`
+alias l='ls -CF'           # Simple classified list
 alias ..='cd ..'
 alias ...='cd ../..'
 
