@@ -12,6 +12,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
   . /etc/bash_completion
 fi
 
+# Nix Profile
+if [ -d "$HOME/.nix-profile/bin" ]; then
+    export PATH="$HOME/.nix-profile/bin:$HOME/.config/nixpkgs/home/bin:$PATH"
+fi
+
 # 3. Shell options
 shopt -s cdspell
 shopt -s autocd
