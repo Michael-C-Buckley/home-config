@@ -2,7 +2,7 @@
   programs.vscode = {
     enable = config.features.vscode.enable;
     # package = pkgs.vscodium;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       # Utilities/General
       ms-vscode-remote.remote-ssh
       ms-vscode-remote.remote-ssh-edit
