@@ -16,6 +16,7 @@ alias gco='git checkout'
 alias ga='git add'
 alias gc='git commit'
 alias gp='git push'
+alias gf='git fetch'
 
 # Kubernetes
 alias k='kubectl'
