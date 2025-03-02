@@ -7,7 +7,9 @@ with pkgs; [
   wget
 
   # Machine Utilites
+  rg
   eza
+  duf
   bat
   killall
   du-dust
