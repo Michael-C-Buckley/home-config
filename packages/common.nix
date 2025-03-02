@@ -7,7 +7,7 @@ with pkgs; [
   wget
 
   # Machine Utilites
-  rg
+  ripgrep
   eza
   duf
   bat

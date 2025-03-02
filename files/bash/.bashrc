@@ -28,3 +28,10 @@ eval "$(direnv hook bash)"
 # Other Files
 source "$HOME/.config/shells/environment.sh"
 source "$HOME/.config/shells/aliases.sh"
+
+if [ -d ~/.config/shells/bash.d ]; then
+  for file in ~/.config/shells/bash.d/*.sh; do
+    [ -r "$file" ] && . "$file"
+  done
+  unset file
+fi
