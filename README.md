@@ -25,6 +25,8 @@ Special thanks to those whose flakes or projects have provided inspiration and I
 
 Just a small section of things I am working on:
 
+* Hyprland: workspaces and binds
+* Laptop dock script for hyprland
 * Convert all Home-manager to Hjem
 * Add options to reduce total files
 * Nvim (via NVF)
