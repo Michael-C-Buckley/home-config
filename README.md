@@ -6,7 +6,7 @@ These are some home directory configurations I have.  They are provided by [Home
 
 Home-Manager is a well-known and widely used for a variety of user-space management and configurations.  Provides a lot of modules and options for declarative management.
 
-I am currently using home-manager for declarative management on graphical, personal computers for complex application management.
+I am currently using home-manager for declarative management on graphical, personal computers for complex application management.  I will be moving to only using Home-manager on non-NixOS systems after converting everything to be Hjem compatible.
 
 ## Hjem
 
@@ -20,3 +20,10 @@ Special thanks to those whose flakes or projects have provided inspiration and I
 
 * [Arbel's Starship toml](https://forgejo.spacetime.technology/arbel/nixos)
 * [Waybar Minimal](https://github.com/ashish-kus/waybar-minimal/tree/main)
+
+## To-Do
+
+Just a small section of things I am working on:
+
+* Convert all Home-manager to Hjem
+* Add options to reduce total files

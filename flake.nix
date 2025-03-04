@@ -46,7 +46,7 @@
     # nixosModules will not have access to the flake inputs here once imported elsehwere
     # You will need to supply them, but can just follow them from this flake
     nixosModules = let
-      homeMod = host: {...}: { imports = [ ./home.nix ./hosts/${host} ./hosts/${host}.nix];};
+      homeMod = host: {...}: { imports = [ ./home.nix ./hosts/${host} ./hosts/${host}/home.nix];};
     in {
       home-manager = {
         default = {...}: { imports = [./home.nix]; };
@@ -55,10 +55,12 @@
       };
 
       # Hjem will only provide dotfile linking and some user-space packages via NixOS options
-      hjem = {
+      hjem = let 
+        hjemConfig = host: {...}: { imports = [./hjem.nix ./hosts/${host} ./hosts/${host}/hjem.nix];};
+      in {
         default = {...}: { imports = [./hjem.nix]; };
-        t14 = {...}: { imports = [./hjem.nix ./hosts/t14]; };
-        x570 = {...}: { imports = [./hjem.nix ./hosts/x570]; };
+        t14 = hjemConfig "t14";
+        x570 = hjemConfig "x570";
       };
     };
   };
