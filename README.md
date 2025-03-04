@@ -27,3 +27,5 @@ Just a small section of things I am working on:
 
 * Convert all Home-manager to Hjem
 * Add options to reduce total files
+* Nvim (via NVF)
+* Emacs (via either spacemacs or doom)
