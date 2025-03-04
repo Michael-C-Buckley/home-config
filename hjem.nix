@@ -1,5 +1,5 @@
 # Base Entry for the Hjem outputs
-{lib, inputs, ...}: {
+{config, lib, inputs, ...}: {
   imports = [
     inputs.hjem.nixosModules.default
   ];
