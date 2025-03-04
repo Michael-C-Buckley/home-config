@@ -1,6 +1,4 @@
 {pkgs, ...}: {
-  imports = [./hyprland/default.nix];
-
   gtk = {
     enable = true;
     theme = {
