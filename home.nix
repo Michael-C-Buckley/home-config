@@ -1,10 +1,10 @@
 # Base Entry for Home-Manager
-{config, lib, ...}: {
+{config, lib, pkgs, ...}: let 
+  inherit (lib) mkDefault mkMerge;
+in {
   imports = [
     ./programs
     ./options/features.nix
-    ./packages/home.nix
-    ./files/home.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
@@ -12,7 +12,9 @@
   home = {
     username = "michael";
     homeDirectory = "/home/michael";
-    stateVersion = lib.mkDefault "24.05";
+    file = import ./files/fileList.nix {inherit config lib;};
+    packages = (import ./packages/common.nix {inherit pkgs;});
+    stateVersion = mkDefault "24.05";
   };
 
   home.sessionVariables = {

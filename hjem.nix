@@ -1,10 +1,10 @@
 # Base Entry for the Hjem outputs
-{ inputs, ... }: {
+{lib, inputs, ...}: {
   imports = [
     inputs.hjem.nixosModules.default
-    ./files/hjem.nix
-    ./packages/hjem.nix
   ];
+
+  users.users.michael.packages = (import ./packages/common.nix {inherit pkgs;});
 
   hjem = {
     clobberByDefault = true;
@@ -12,6 +12,7 @@
       enable = true;
       user = "michael";
       directory = "/home/michael";
+      files = import ./files/fileList.nix {inherit config lib;};
     };
   };
 }

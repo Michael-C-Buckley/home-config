@@ -26,45 +26,39 @@
     };
   in {
     homeConfigurations = {
-      "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit inputs;};
-        inherit pkgs;
-        modules = [./home.nix ./hosts/x570.nix];
-      };
-
-      "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit inputs;};
-        inherit pkgs;
-        modules = [./home.nix ./hosts/t14.nix];
-      };
-
       "michael" = hmConfig {
         extraSpecialArgs = {inherit inputs;};
         inherit pkgs;
         modules = [./home.nix];
       };
+      "michael@t14" = hmConfig {
+        extraSpecialArgs = {inherit inputs;};
+        inherit pkgs;
+        modules = [./home.nix ./hosts/t14 ./hosts/t14/home.nix];
+      };
+      "michael@x570" = hmConfig {
+        extraSpecialArgs = {inherit inputs;};
+        inherit pkgs;
+        modules = [./home.nix ./hosts/x570 ./hosts/x570/home.nix];
+      };
     };
 
     # nixosModules will not have access to the flake inputs here once imported elsehwere
     # You will need to supply them, but can just follow them from this flake
-    nixosModules = {
+    nixosModules = let
+      homeMod = host: {...}: { imports = [ ./home.nix ./hosts/${host} ./hosts/${host}.nix];};
+    in {
       home-manager = {
-        x570 = {...}: {
-          imports = [./home.nix ./hosts/x570.nix];
-        };
-
-        t14 = {...}: {
-          imports = [./home.nix ./hosts/t14.nix];
-        };
-
-        default = {...}: {
-          imports = [./home.nix];
-        };
+        default = {...}: { imports = [./home.nix]; };
+        t14 = homeMod "t14";
+        x570 = homeMod "x570";
       };
 
       # Hjem will only provide dotfile linking and some user-space packages via NixOS options
-      hjem.default = {...}: {
-        imports = [./hjem.nix];
+      hjem = {
+        default = {...}: { imports = [./hjem.nix]; };
+        t14 = {...}: { imports = [./hjem.nix ./hosts/t14]; };
+        x570 = {...}: { imports = [./hjem.nix ./hosts/x570]; };
       };
     };
   };
