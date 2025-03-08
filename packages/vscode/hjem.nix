@@ -1,7 +1,6 @@
 {config, lib, pkgs, ...}: let
   plugins = import ./vscode-plugins.nix {inherit pkgs lib;};
+  cfg = config.features.vscode.enable;
 in {
-  users.users.michael.packages = [
-    (import ./base.nix {inherit pkgs plugins;})
-  ];
+  users.users.michael.packages = (if cfg then import ./base.nix {inherit pkgs plugins;} else []);
 }
