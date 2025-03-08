@@ -1,12 +1,15 @@
 {config, pkgs, ...}: {
   programs.vscode = {
-    enable = config.features.vscode.enable;
-    # package = pkgs.vscodium;
+    enable = false;
+    # enable = config.features.vscode.enable;
     profiles.default.extensions = with pkgs.vscode-extensions; [
       # Utilities/General
       ms-vscode-remote.remote-ssh
       ms-vscode-remote.remote-ssh-edit
       ms-vscode-remote.remote-containers
+      ms-vsliveshare.vsliveshare
+
+      
       vscode-icons-team.vscode-icons
       mechatroner.rainbow-csv
       streetsidesoftware.code-spell-checker
@@ -19,11 +22,13 @@
       huytd.nord-light
       arcticicestudio.nord-visual-studio-code
       enkia.tokyo-night
+      mvllow.rose-pine
 
       # Python
       ms-python.python
       ms-python.vscode-pylance
       ms-pyright.pyright
+      ms-python.debugpy
 
       # Nix
       bbenoist.nix

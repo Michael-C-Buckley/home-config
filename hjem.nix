@@ -3,6 +3,7 @@
   imports = [
     inputs.hjem.nixosModules.default
     ./options/features.nix
+    ./packages/vscode/hjem.nix
   ];
 
   users.users.michael.packages = (import ./packages/common.nix {inherit pkgs;});
