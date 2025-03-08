@@ -5,7 +5,7 @@ in {
   imports = [
     ./programs
     ./options/features.nix
-    ./packages/vscode/home.nix
+    ./modules/vscode/home.nix
   ];
 
   nixpkgs.config.allowUnfree = true;
