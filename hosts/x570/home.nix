@@ -10,6 +10,7 @@
   };
 
   features = {
+    useHome = false;
     vscode.enable = true;
     waybar.enable = true;
     hyprland.enable = true;

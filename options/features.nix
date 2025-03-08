@@ -5,10 +5,10 @@ in {
   options = {
     # Define custom options here
     features = {
-      skipDuplicates = mkOption {
+      useHome = mkOption {
         type = bool;
-        default = false;
-        description = "Skip any Hjem-covered features when evaulating home-manager config";
+        default = true;
+        description = "Use home-manager for any features covered by hjem";
       };
       hyprland.enable = mkOption {
         type = bool;
