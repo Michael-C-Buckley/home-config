@@ -17,9 +17,9 @@
     };
   };
 
-  outputs = {self, nixpkgs, ...} @ inputs: let
+  outputs = {self, nixpkgs, home-manager, ...} @ inputs: let
     system = "x86_64-linux";
-    hmConfig = inputs.home-manager.lib.homeManagerConfiguration;
+    hmConfig = home-manager.lib.homeManagerConfiguration;
     pkgs = import nixpkgs {
       inherit system;
       config.allowUnfree = true;
@@ -43,12 +43,17 @@
       };
     };
 
-    # nixosModules will not have access to the flake inputs here once imported elsehwere
-    # You will need to supply them, but can just follow them from this flake
+    # ---- nixosModules will not have access to the flake inputs here once imported elsewhere ----
+    # ---- You will need to supply them, but can just follow them from this flake             ----
     nixosModules = let
-      homeMod = host: {...}: { imports = [ ./home.nix ./hosts/${host} ./hosts/${host}/home.nix];};
+      homeMod = host: {...}: { imports = [
+        home-manager.nixosModules.home-manager
+        ./home.nix
+        ./hosts/${host}
+        ./hosts/${host}/home.nix
+      ];};
     in {
-      home-manager = {
+      home = {
         default = {...}: { imports = [./home.nix]; };
         t14 = homeMod "t14";
         x570 = homeMod "x570";
