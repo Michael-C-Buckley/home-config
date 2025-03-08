@@ -5,6 +5,7 @@
     # My main system is tracking cosmic while it is in production for cachix hits
     cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixpkgs.follows = "cosmic/nixpkgs";
+    nixpkgs-stable.follows = "cosmic/nixpkgs-stable";
 
     nix-devshells = {
       url = "github:Michael-C-Buckley/nix-devshells";
@@ -22,30 +23,28 @@
     };
   };
 
-  outputs = {self, nixpkgs, home-manager, nix-devshells, ...} @ inputs: let
+  outputs = {self, nixpkgs, nixpkgs-stable, home-manager, nix-devshells, ...} @ inputs: let
     system = "x86_64-linux";
     hmConfig = home-manager.lib.homeManagerConfiguration;
-    pkgs = import nixpkgs {
-      inherit system;
-      config.allowUnfree = true;
-    };
+    pkgs = import nixpkgs {inherit system; config.allowUnfree = true;};
+    stablePkgs = import nixpkgs-stable {inherit system; config.allowUnfree = true;};
   in {
     checks = nix-devshells.checks;
     devShells.x86_64-linux.default = nix-devshells.devShells.x86_64-linux.nixos;
 
     homeConfigurations = {
       "michael" = hmConfig {
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit stablePkgs inputs;};
         inherit pkgs;
         modules = [./home.nix];
       };
       "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit stablePkgs inputs;};
         inherit pkgs;
         modules = [./home.nix ./hosts/t14 ./hosts/t14/home.nix];
       };
       "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit inputs;};
+        extraSpecialArgs = {inherit stablePkgs inputs;};
         inherit pkgs;
         modules = [./home.nix ./hosts/x570 ./hosts/x570/home.nix];
       };
