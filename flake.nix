@@ -6,6 +6,11 @@
     cosmic.url = "github:lilyinstarlight/nixos-cosmic";
     nixpkgs.follows = "cosmic/nixpkgs";
 
+    nix-devshells = {
+      url = "github:Michael-C-Buckley/nix-devshells";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -17,7 +22,7 @@
     };
   };
 
-  outputs = {self, nixpkgs, home-manager, ...} @ inputs: let
+  outputs = {self, nixpkgs, home-manager, nix-devshells, ...} @ inputs: let
     system = "x86_64-linux";
     hmConfig = home-manager.lib.homeManagerConfiguration;
     pkgs = import nixpkgs {
@@ -25,6 +30,9 @@
       config.allowUnfree = true;
     };
   in {
+    checks = nix-devshells.checks;
+    devShells.x86_64-linux.default = nix-devshells.devShells.x86_64-linux.nixos;
+
     homeConfigurations = {
       "michael" = hmConfig {
         extraSpecialArgs = {inherit inputs;};
