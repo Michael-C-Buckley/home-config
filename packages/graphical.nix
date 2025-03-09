@@ -7,6 +7,10 @@
     gammastep
     wireshark
 
+    # Terminals
+    ghostty
+    kitty
+
     # Desktop
     xfce.thunar # File manager
 
@@ -26,6 +30,8 @@
     # Productivity
     kdePackages.kalgebra # Calculator
     neovide # Nvim GUI
-    ghostty
+    obsidian
+    libreoffice
+    gimp
   ];
 }

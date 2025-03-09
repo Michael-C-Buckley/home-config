@@ -248,6 +248,10 @@
         "nixpkgs": [
           "cosmic",
           "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "cosmic",
+          "nixpkgs-stable"
         ]
       }
     },

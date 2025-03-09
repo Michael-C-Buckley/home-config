@@ -6,12 +6,16 @@ with pkgs; [
   curl
   wget
 
-  # Shells
+  # Shells/Terminals
   zsh
   fish
   nushell
+  direnv
+  blesh # Bash Line Editor - for Starship transient prompt
+  starship
 
   # Machine Utilites
+  python
   ripgrep
   eza
   duf
@@ -23,9 +27,4 @@ with pkgs; [
   fd
   fzf
   zoxide
-
-  # Terminal/Prompt
-  blesh # Bash Line Editor - for Starship transient prompt
-  starship
-  direnv
 ]

@@ -1,7 +1,7 @@
 {config, ...}: {
   imports = [
     ../../modules/graphics.nix
-    ../extras.nix
+    ../../packages/graphical.nix
   ];
   home = {
     stateVersion = "24.05";
