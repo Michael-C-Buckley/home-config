@@ -6,6 +6,11 @@ with pkgs; [
   curl
   wget
 
+  # Shells
+  zsh
+  fish
+  nushell
+
   # Machine Utilites
   ripgrep
   eza

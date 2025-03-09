@@ -8,13 +8,13 @@
     wireshark
 
     # Desktop
-    xfce.thunar
+    xfce.thunar # File manager
 
     # Communication
     librewolf
     brave
     signal-desktop
-    vesktop # Independent Discord
+    discord
     kotatogram-desktop # Telegram Fork
     tor-browser
 
