@@ -71,6 +71,7 @@
         hjemConfig = host: {...}: { imports = [./hjem.nix ./hosts/${host} ./hosts/${host}/hjem.nix];};
       in {
         default = {...}: { imports = [./hjem.nix]; };
+	live-iso = self.outputs.nixosModules.hjem.default;
         t14 = hjemConfig "t14";
         x570 = hjemConfig "x570";
       };
