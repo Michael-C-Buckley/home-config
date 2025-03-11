@@ -14,7 +14,6 @@ with pkgs; [
   blesh # Bash Line Editor - for Starship transient prompt
   starship
   pure-prompt # For Zsh
-  fishPlugins.pure # Fish's Pure Port
 
   # Machine Utilites
   python
