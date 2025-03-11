@@ -33,5 +33,6 @@
     obsidian
     libreoffice
     gimp
+    zed-editor
   ];
 }
