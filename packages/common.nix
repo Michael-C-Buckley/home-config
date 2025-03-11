@@ -16,7 +16,7 @@ with pkgs; [
   pure-prompt # For Zsh
 
   # Machine Utilites
-  python
+  python3
   ripgrep
   eza
   duf
