@@ -1,4 +1,5 @@
 {
+  ".config/direnv/direnv.toml".source = ../userfiles/direnv.toml;
   ".gitconfig".source = ../userfiles/.gitconfig;
   ".config/ghostty/config".source = ../userfiles/ghostty;
 
