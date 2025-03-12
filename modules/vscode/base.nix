@@ -27,6 +27,8 @@
       enkia.tokyo-night
       mvllow.rose-pine
       plugins.wicked-labs.wvsc-serendipity
+      catppuccin.catppuccin-vsc
+      jdinhlife.gruvbox
 
       # Python
       ms-python.python

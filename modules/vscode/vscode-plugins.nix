@@ -11,6 +11,20 @@ merge
     (merge
       (merge
       {
+        "robbowen"."synthwave-vscode" = vscode-utils.extensionFromVscodeMarketplace {
+          name = "synthwave-vscode";
+          publisher = "robbowen";
+          version = "0.1.18";
+          sha256 = "0f52fbk3c8r0y2j9kcg5a95rz40650lh1dccz17hhf1ja0ymmvlr";
+
+        };
+        "eliverlara"."andromeda" = vscode-utils.extensionFromVscodeMarketplace {
+          name = "andromeda";
+          publisher = "eliverlara";
+          version = "1.8.2";
+          sha256 = "05rrgvpqngfrwa289jw5kff9ns52ba24nzrfcl1rvf55w9gb7gxs";
+
+        };
         "wicked-labs"."wvsc-serendipity" = vscode-utils.extensionFromVscodeMarketplace {
           name = "wvsc-serendipity";
           publisher = "wicked-labs";
