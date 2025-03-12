@@ -1,6 +1,4 @@
-{config, lib, stablePkgs, ...}: let
-  # Override and use stable packages due to unstable build failure
-  pkgs = stablePkgs;
+{config, lib, pkgs, ...}: let
   plugins = import ./vscode-plugins.nix {inherit pkgs lib;};
   cfg = config.features.vscode.enable;
 in {
