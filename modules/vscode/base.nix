@@ -15,7 +15,10 @@
       streetsidesoftware.code-spell-checker
       formulahendry.auto-rename-tag # Matches XML tags while editting
       alefragnani.bookmarks
+
+      # Ansible
       redhat.ansible
+      redhat.vscode-yaml
 
       # Themes
       teabyii.ayu
