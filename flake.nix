@@ -55,6 +55,7 @@
     in {
       home = {
         default = {...}: { imports = [./home.nix]; };
+        wsl = homeMod "wsl";
         t14 = homeMod "t14";
         x570 = homeMod "x570";
       };
