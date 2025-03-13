@@ -25,29 +25,22 @@
 
   outputs = {self, nixpkgs, nixpkgs-stable, home-manager, nix-devshells, ...} @ inputs: let
     system = "x86_64-linux";
-    hmConfig = home-manager.lib.homeManagerConfiguration;
-    pkgs = import nixpkgs {inherit system; config.allowUnfree = true;};
-    stablePkgs = import nixpkgs-stable {inherit system; config.allowUnfree = true;};
+    pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
+    stablePkgs = import nixpkgs-stable { inherit system; config = { allowUnfree = true; }; };
   in {
     checks = nix-devshells.checks;
     devShells.x86_64-linux.default = nix-devshells.devShells.x86_64-linux.nixos;
 
-    homeConfigurations = {
-      "michael" = hmConfig {
+    homeConfigurations = let 
+      hmConfig = modules: home-manager.lib.homeManagerConfiguration {
         extraSpecialArgs = {inherit stablePkgs inputs;};
         inherit pkgs;
-        modules = [./home.nix];
+        modules = [./home.nix] ++ modules;
       };
-      "michael@t14" = hmConfig {
-        extraSpecialArgs = {inherit stablePkgs inputs;};
-        inherit pkgs;
-        modules = [./home.nix ./hosts/t14 ./hosts/t14/home.nix];
-      };
-      "michael@x570" = hmConfig {
-        extraSpecialArgs = {inherit stablePkgs inputs;};
-        inherit pkgs;
-        modules = [./home.nix ./hosts/x570 ./hosts/x570/home.nix];
-      };
+    in {
+      "michael" = hmConfig [];
+      "michael@t14" = hmConfig [./hosts/t14 ./hosts/t14/home.nix];
+      "michael@x570" = hmConfig [./hosts/x570 ./hosts/x570/home.nix];
     };
 
     # ---- nixosModules will not have access to the flake inputs here once imported elsewhere ----
@@ -68,12 +61,12 @@
 
       # Hjem will only provide dotfile linking and some user-space packages via NixOS options
       hjem = let 
-        hjemConfig = host: {...}: { imports = [./hjem.nix ./hosts/${host} ./hosts/${host}/hjem.nix];};
+        hjemMod = host: {...}: { imports = [./hjem.nix ./hosts/${host} ./hosts/${host}/hjem.nix];};
       in {
         default = {...}: { imports = [./hjem.nix]; };
-	live-iso = self.outputs.nixosModules.hjem.default;
-        t14 = hjemConfig "t14";
-        x570 = hjemConfig "x570";
+	      live-iso = self.outputs.nixosModules.hjem.default;
+        t14 = hjemMod "t14";
+        x570 = hjemMod "x570";
       };
     };
   };
