@@ -41,6 +41,7 @@
       "michael" = hmConfig [];
       "michael@t14" = hmConfig [./hosts/t14 ./hosts/t14/home.nix];
       "michael@x570" = hmConfig [./hosts/x570 ./hosts/x570/home.nix];
+      "michael@wsl" = hmConfig [./hosts/wsl ./hosts/wsl/home.nix];
     };
 
     # ---- nixosModules will not have access to the flake inputs here once imported elsewhere ----
