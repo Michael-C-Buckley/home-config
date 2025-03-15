@@ -1,4 +1,7 @@
-{config, lib, ...}: lib.mkMerge [
+{config, lib, ...}: let
+  inherit (lib) mkIf mkMerge;
+  hyprland = config.features.michael.hyprland.enable;
+in mkMerge [
   (import ./nix/standard.nix)
-  (lib.mkIf config.features.hyprland.enable (import ./nix/hyprland.nix))
+  (mkIf hyprland (import ./nix/hyprland.nix))
 ]
