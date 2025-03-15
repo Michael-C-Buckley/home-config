@@ -1,5 +1,5 @@
 { lib, ... }: let 
-  inherit (lib) types mkOption;
+  inherit (lib) types mkOption mkEnableOption;
   inherit (types) bool;
 in {
   options = {
@@ -10,21 +10,10 @@ in {
         default = true;
         description = "Use home-manager for any features covered by hjem";
       };
-      hyprland.enable = mkOption {
-        type = bool;
-        default = false;
-        description = "Include my Hyprland configurations.";
-      };
-      vscode.enable = mkOption {
-        type = bool;
-        default = false;
-        description = "Include my VSCode configurations.";
-      };
-      waybar.enable = mkOption {
-        type = bool;
-        default = false;
-        description = "Enable my Waybar configurations.";
-      };
+      graphics = mkEnableOption {};
+      hyprland.enable = mkEnableOption {};
+      vscode.enable = mkEnableOption {};
+      waybar.enable = mkEnableOption {};
     };
   };
 }

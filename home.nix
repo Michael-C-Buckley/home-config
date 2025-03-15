@@ -1,6 +1,8 @@
 # Base Entry for Home-Manager
 {config, lib, pkgs, ...}: let 
   inherit (lib) mkDefault optionalAttrs;
+  inherit (config.features) useHome;
+  graphicalPackages = lib.optional config.someFeatureEnabled (import ./packages/graphical.nix { inherit pkgs; });
 in {
   imports = [
     ./programs
@@ -20,8 +22,8 @@ in {
       NIXOS_OZONE_WL = "1";
       GTK_USE_PORTAL = "1";
     };
-  } // optionalAttrs config.features.useHome {
+  } // optionalAttrs useHome {
     file = import ./files/fileList.nix {inherit config lib;};
-    packages = (import ./packages/common.nix {inherit pkgs;});
+    packages = (import ./packages/common.nix {inherit pkgs;}) ++ graphicalPackages;
   };
 }

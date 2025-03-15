@@ -1,12 +1,14 @@
 # Base Entry for the Hjem outputs
-{config, pkgs, lib, inputs, ...}: {
+{config, pkgs, lib, inputs, ...}: let
+  graphicalPackages = lib.optional config.someFeatureEnabled (import ./packages/graphical.nix { inherit pkgs; });
+in {
   imports = [
     inputs.hjem.nixosModules.default
     ./options/features.nix
     ./modules/vscode/hjem.nix
   ];
 
-  users.users.michael.packages = (import ./packages/common.nix {inherit pkgs;});
+  users.users.michael.packages = (import ./packages/common.nix {inherit pkgs;}) ++ graphicalPackages;
 
   hjem = {
     clobberByDefault = true;
