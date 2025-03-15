@@ -11,20 +11,6 @@ merge
     (merge
       (merge
       {
-        "be5invis"."vscode-custom-css" = vscode-utils.extensionFromVscodeMarketplace {
-          name = "vscode-custom-css";
-          publisher = "be5invis";
-          version = "7.4.2";
-          sha256 = "1k10k03al0lvj9zf5g9s8bgikq2l47ispgk5d7jnsj53dc2mkwdr";
-
-        };
-        "brandonkirbyson"."vscode-animations" = vscode-utils.extensionFromVscodeMarketplace {
-          name = "vscode-animations";
-          publisher = "brandonkirbyson";
-          version = "2.0.7";
-          sha256 = "13whqqlv46mngg94pyy87s11im3ixb1rf4ngdd8jhk4znvbqph2d";
-
-        };
         "robbowen"."synthwave-vscode" = vscode-utils.extensionFromVscodeMarketplace {
           name = "synthwave-vscode";
           publisher = "robbowen";

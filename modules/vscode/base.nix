@@ -13,7 +13,7 @@
       vscode-icons-team.vscode-icons
       mechatroner.rainbow-csv
       streetsidesoftware.code-spell-checker
-      formulahendry.auto-rename-tag # Matches XML tags while editting
+      formulahendry.auto-rename-tag # Matches XML tags while editing
       alefragnani.bookmarks
 
       # Ansible
@@ -49,10 +49,6 @@
 
       # Elixir
       elixir-lsp.vscode-elixir-ls
-
-      # On request, to test something
-      plugins.be5invis.vscode-custom-css
-      plugins.brandonkirbyson.vscode-animations
     ];
   })
 ]

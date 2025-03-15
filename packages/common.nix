@@ -15,7 +15,7 @@ with pkgs; [
   starship
   pure-prompt # For Zsh
 
-  # Machine Utilites
+  # Machine Utilities
   python3
   ripgrep
   eza
