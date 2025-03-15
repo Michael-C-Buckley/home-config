@@ -1,8 +1,8 @@
 # Base Entry for Home-Manager
 {config, lib, pkgs, ...}: let 
   inherit (lib) mkDefault optionalAttrs;
-  inherit (config.features) useHome;
-  graphicalPackages = lib.optional config.someFeatureEnabled (import ./packages/graphical.nix { inherit pkgs; });
+  inherit (config.features.michael) useHome graphics;
+  graphicalPackages = lib.optional graphics (import ./packages/graphical.nix { inherit pkgs; });
 in {
   imports = [
     ./programs
