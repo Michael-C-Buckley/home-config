@@ -1,7 +1,8 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
   inherit (config.features.michael) graphics;
-  graphicalPackages = lib.optional graphics (import ./packages/graphical.nix { inherit pkgs; });
+  graphicalPackages = lib.optionals graphics (import ./packages/graphical.nix { inherit pkgs; });
+
 in {
   imports = [
     inputs.hjem.nixosModules.default

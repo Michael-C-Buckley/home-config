@@ -2,7 +2,7 @@
 {config, lib, pkgs, ...}: let 
   inherit (lib) mkDefault optionalAttrs;
   inherit (config.features.michael) useHome graphics;
-  graphicalPackages = lib.optional graphics (import ./packages/graphical.nix { inherit pkgs; });
+  graphicalPackages = lib.optionals graphics (import ./packages/graphical.nix { inherit pkgs; });
 in {
   imports = [
     ./programs
