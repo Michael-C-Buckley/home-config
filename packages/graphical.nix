@@ -18,7 +18,7 @@
   brave
   signal-desktop
   discord
-  telegram-desktop
+  materialgram # Telegram fork
   tor-browser
 
   # Media
