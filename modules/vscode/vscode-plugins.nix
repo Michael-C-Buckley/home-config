@@ -32,6 +32,22 @@ merge
           sha256 = "1l484q90kq5yzfxbaz7bfdiqbick92g70gakxbmcxq48ign85wlg";
 
         };
+        {
+        "ispapp"."mikrotik-routeros-script-tools" = vscode-utils.extensionFromVscodeMarketplace {
+          name = "mikrotik-routeros-script-tools";
+          publisher = "ispapp";
+          version = "1.1.0";
+          sha256 = "1glbl3cdmq8jw1i46v1m80h3x2fkyk2h1fxr68vkj1bikcpxcmhf";
+
+        };
+        "jamiewoodio"."cisco" = vscode-utils.extensionFromVscodeMarketplace {
+          name = "cisco";
+          publisher = "jamiewoodio";
+          version = "1.9.1";
+          sha256 = "0hqmpjpaxyhmxskarcfrh3w2kcsjgr0cmc2bifp7qpi99glw2yq8";
+
+        };
+      }
       }
         (lib.attrsets.optionalAttrs (isLinux && (isi686 || isx86_64)) { }))
       (lib.attrsets.optionalAttrs (isLinux && (isAarch32 || isAarch64)) { }))

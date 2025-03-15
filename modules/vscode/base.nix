@@ -49,6 +49,10 @@
 
       # Elixir
       elixir-lsp.vscode-elixir-ls
+
+      # Networking
+      plugins.jamiewoodio.cisco
+      plugins.ispapp.mikrotik-routeros-script-tools
     ];
   })
 ]
