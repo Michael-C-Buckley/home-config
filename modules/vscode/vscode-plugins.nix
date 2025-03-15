@@ -32,7 +32,6 @@ merge
           sha256 = "1l484q90kq5yzfxbaz7bfdiqbick92g70gakxbmcxq48ign85wlg";
 
         };
-        {
         "ispapp"."mikrotik-routeros-script-tools" = vscode-utils.extensionFromVscodeMarketplace {
           name = "mikrotik-routeros-script-tools";
           publisher = "ispapp";
@@ -47,7 +46,6 @@ merge
           sha256 = "0hqmpjpaxyhmxskarcfrh3w2kcsjgr0cmc2bifp7qpi99glw2yq8";
 
         };
-      }
       }
         (lib.attrsets.optionalAttrs (isLinux && (isi686 || isx86_64)) { }))
       (lib.attrsets.optionalAttrs (isLinux && (isAarch32 || isAarch64)) { }))
