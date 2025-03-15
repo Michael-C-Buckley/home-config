@@ -26,9 +26,11 @@
       arcticicestudio.nord-visual-studio-code
       enkia.tokyo-night
       mvllow.rose-pine
-      plugins.wicked-labs.wvsc-serendipity
       catppuccin.catppuccin-vsc
       jdinhlife.gruvbox
+      plugins.wicked-labs.wvsc-serendipity
+      plugins.robbowen.synthwave-vscode
+      plugins.eliverlara.andromeda
 
       # Python
       ms-python.python
@@ -47,6 +49,10 @@
 
       # Elixir
       elixir-lsp.vscode-elixir-ls
+
+      # On request, to test something
+      plugins.be5invis.vscode-custom-css
+      plugins.brandonkirbyson.vscode-animations
     ];
   })
 ]

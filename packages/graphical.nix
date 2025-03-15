@@ -19,7 +19,7 @@
     brave
     signal-desktop
     discord
-    kotatogram-desktop # Telegram Fork
+    telegram-desktop
     tor-browser
 
     # Media
