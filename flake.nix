@@ -67,6 +67,7 @@
       in {
         default = {...}: { imports = [./hjem.nix]; };
 	      live-iso = self.outputs.nixosModules.hjem.default;
+        p520 = self.outputs.nixosModules.hjem.default;
         t14 = hjemMod "t14";
         x570 = hjemMod "x570";
       };
