@@ -1,5 +1,5 @@
 _: {
-  features = {
+  features.michael = {
     graphics = true;
     vscode.enable = true;
     waybar.enable = true;

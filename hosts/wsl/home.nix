@@ -7,7 +7,5 @@
     stateVersion = "24.05";
   };
 
-  features = {
-    useHome = true;
-  };
+  features.michael.useHome = true;
 }

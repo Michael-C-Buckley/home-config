@@ -8,5 +8,5 @@
     file.".config/hypr/host.conf".source = ./hyprland.conf;
   };
 
-  features.useHome = false;
+  features.michael.useHome = false;
 }
