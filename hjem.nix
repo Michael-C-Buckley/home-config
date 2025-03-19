@@ -1,7 +1,9 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
   inherit (config.features.michael) graphics;
+  commonPackages = (import ./packages/common.nix {inherit pkgs;});
   graphicalPackages = lib.optionals graphics (import ./packages/graphical.nix { inherit pkgs; });
+
 
 in {
   imports = [
@@ -10,7 +12,8 @@ in {
     ./modules/vscode/hjem.nix
   ];
 
-  users.users.michael.packages = (import ./packages/common.nix {inherit pkgs;}) ++ graphicalPackages;
+  users.users.michael.packages = commonPackages ++ graphicalPackages;
+  users.users.root.packages = commonPackages;
 
   hjem = {
     clobberByDefault = true;
