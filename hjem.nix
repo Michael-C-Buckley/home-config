@@ -20,5 +20,12 @@ in {
       directory = "/home/michael";
       files = import ./files/fileList.nix {inherit config lib;};
     };
+    # Here's an attempt at seeing if Hjem can apply user configs to root
+    users.root = {
+      enable = true;
+      user = "root";
+      directory = "/root";
+      files = import ./files/fileList.nix {inherit config lib;};
+    };
   };
 }
