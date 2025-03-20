@@ -1,7 +1,7 @@
 # Waybar Home Configuration
 {config, lib, ...}:
 let
-  enabled = config.features.waybar.enable;
+  enabled = config.features.michael.waybar.enable;
   baseDir = ".config/waybar";
 in {
   programs.waybar = {
