@@ -1,11 +1,11 @@
-{...}: {
+{pkgs, ...}: {
   imports = [
     ../../modules/graphics.nix
-    ../../packages/graphical.nix
   ];
   home = {
     stateVersion = "24.05";
   };
 
-  features.michael.useHome = true;
+  # home.packages = (import ../../packages/graphical.nix {inherit pkgs;});
+  features.michael.useHome = false;
 }

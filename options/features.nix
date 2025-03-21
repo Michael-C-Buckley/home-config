@@ -8,7 +8,8 @@ in {
       default = true;
       description = "Use home-manager for any features covered by hjem";
     };
-    graphics = mkEnableOption {};
+    minimalGraphical = mkEnableOption {};
+    extendedGraphical = mkEnableOption {};
     hyprland.enable = mkEnableOption {};
     vscode.enable = mkEnableOption {};
     waybar.enable = mkEnableOption {};
