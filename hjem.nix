@@ -1,6 +1,6 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
-  inherit (lib) optionals
+  inherit (lib) optionals;
   inherit (config.features.michael) minimalGraphical extendedGraphical;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
   minGfxPkgs = optionals minimalGraphical (import ./packages/minimalGraphical.nix { inherit pkgs; });
