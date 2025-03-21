@@ -70,6 +70,7 @@
         p520 = self.outputs.nixosModules.hjem.default;
         t14 = hjemMod "t14";
         x570 = hjemMod "x570";
+        wsl = {...}: {imports = [./hjem.nix ./hosts/wsl];};
       };
     };
   };
