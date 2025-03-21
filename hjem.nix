@@ -1,8 +1,10 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
-  inherit (config.features.michael) graphics;
+  inherit (lib) optionals
+  inherit (config.features.michael) minimalGraphical extendedGraphical;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
-  graphicalPackages = lib.optionals graphics (import ./packages/graphical.nix { inherit pkgs; });
+  minGfxPkgs = optionals minimalGraphical (import ./packages/minimalGraphical.nix { inherit pkgs; });
+  extGfxPkgs = optionals extendedGraphical (import ./packages/extendedGraphical.nix { inherit pkgs; });
 
 
 in {
@@ -12,7 +14,7 @@ in {
     ./modules/vscode/hjem.nix
   ];
 
-  users.users.michael.packages = commonPackages ++ graphicalPackages;
+  users.users.michael.packages = commonPackages ++ minGfxPkgs ++ extGfxPkgs;
   users.users.root.packages = commonPackages;
 
   hjem = {

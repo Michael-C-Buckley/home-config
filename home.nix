@@ -1,8 +1,9 @@
 # Base Entry for Home-Manager
 {config, lib, pkgs, ...}: let 
-  inherit (lib) mkDefault optionalAttrs;
+  inherit (lib) mkDefault optionalAttrs optionals;
   inherit (config.features.michael) useHome graphics;
-  graphicalPackages = lib.optionals graphics (import ./packages/graphical.nix { inherit pkgs; });
+  minGfxPkgs = optionals minimalGraphical (import ./packages/minimalGraphical.nix { inherit pkgs; });
+  extGfxPkgs = optionals extendedGraphical (import ./packages/extendedGraphical.nix { inherit pkgs; });
 in {
   imports = [
     ./programs
@@ -26,6 +27,6 @@ in {
     };
   } // optionalAttrs useHome {
     file = import ./files/fileList.nix {inherit config lib;};
-    packages = (import ./packages/common.nix {inherit pkgs;}) ++ graphicalPackages;
+    packages = (import ./packages/common.nix {inherit pkgs;}) ++ minGfxPkgs ++ extGfxPkgs;
   };
 }
