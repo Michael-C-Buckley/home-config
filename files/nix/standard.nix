@@ -14,6 +14,7 @@
 
   # Fish
   ".config/fish/config.fish".source = ../fish/config.fish;
+  ".config/fish/conf.d/functions.fish".source = ../fish/functions.fish;
 
   # Zsh
   ".zshrc".source = ../zsh/default.zshrc;
