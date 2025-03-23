@@ -12,6 +12,9 @@
   ".bashrc".source = ../bash/.bashrc;
   ".bash_profile".source = ../bash/.bash_profile;
 
+  # Fish
+  ".config/fish/config.fish".source = ../fish/config.fish;
+
   # Zsh
   ".zshrc".source = ../zsh/default.zshrc;
   ".config/zsh/geometry/myGeometry.zsh".source = ../zsh/myGeometry.zsh;

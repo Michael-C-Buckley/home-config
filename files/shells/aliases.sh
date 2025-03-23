@@ -27,13 +27,3 @@ alias n='nu -c'
 # ZFS
 alias zls='zfs list -o name,used,compressratio,lused,avail'
 alias zsls='zfs list -t snapshot -S creation -o name,creation,used,written,refer'
-
-# FRR
-show() {
-    sudo vtysh -c "show $*"
-}
-
-# Bat replaces Cat if available
-if command -v bat >/dev/null 2>&1; then
-    alias cat='bat -p'
-fi

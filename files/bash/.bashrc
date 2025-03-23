@@ -17,13 +17,23 @@ if [ -d "$HOME/.nix-profile/bin" ]; then
     export PATH="$HOME/.nix-profile/bin:$HOME/.config/nixpkgs/home/bin:$PATH"
 fi
 
-# 3. Shell options
+# Shell options
 shopt -s cdspell
 shopt -s autocd
 shopt -s histappend
 
 # Direnv
 eval "$(direnv hook bash)"
+
+# Bat replaces Cat if available
+if command -v bat >/dev/null 2>&1; then
+    alias cat='bat -p'
+fi
+
+# FRR
+show() {
+    sudo vtysh -c "show $*"
+}
 
 # Other Files
 source "$HOME/.config/shells/environment.sh"
