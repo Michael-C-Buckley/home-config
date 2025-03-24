@@ -16,7 +16,4 @@
   discord
   materialgram # Telegram fork
   tor-browser
-
-  # Productivity
-  zed-editor
 ]
