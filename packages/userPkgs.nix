@@ -5,6 +5,6 @@
 in 
 
 commonPackages
-++ optionals minimalGraphical (import ./packages/minimalGraphical.nix { inherit pkgs; })
-++ optionals extendedGraphical (import ./packages/extendedGraphical.nix { inherit pkgs; })
+++ optionals minimalGraphical (import ./minimalGraphical.nix { inherit pkgs; })
+++ optionals extendedGraphical (import ./extendedGraphical.nix { inherit pkgs; })
 ++ optionals includeZed ([pkgs.zed-editor])
