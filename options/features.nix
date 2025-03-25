@@ -13,5 +13,6 @@ in {
     hyprland.enable = mkEnableOption {};
     vscode.enable = mkEnableOption {};
     waybar.enable = mkEnableOption {};
+    includeZed = mkEnableOption{};
   };
 }

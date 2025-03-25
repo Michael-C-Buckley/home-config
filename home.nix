@@ -2,8 +2,7 @@
 {config, lib, pkgs, ...}: let 
   inherit (lib) mkDefault optionalAttrs optionals;
   inherit (config.features.michael) useHome graphics;
-  minGfxPkgs = optionals minimalGraphical (import ./packages/minimalGraphical.nix { inherit pkgs; });
-  extGfxPkgs = optionals extendedGraphical (import ./packages/extendedGraphical.nix { inherit pkgs; });
+  commonPackages = (import ./packages/common.nix {inherit pkgs;});
 in {
   imports = [
     ./programs
@@ -11,7 +10,10 @@ in {
     ./modules/vscode/home.nix
   ];
 
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config = {
+    allowUnfree = true;
+    allowBroken = false;
+  };
 
   programs.home-manager.enable = true;
 
@@ -27,6 +29,6 @@ in {
     };
   } // optionalAttrs useHome {
     file = import ./files/fileList.nix {inherit config lib;};
-    packages = (import ./packages/common.nix {inherit pkgs;}) ++ minGfxPkgs ++ extGfxPkgs;
+    packages = (import ./packages/userPkgs.nix {inherit config pkgs lib commonPackages;});
   };
 }

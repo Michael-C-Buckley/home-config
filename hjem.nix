@@ -1,12 +1,7 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
   inherit (lib) optionals mkForce;
-  inherit (config.features.michael) minimalGraphical extendedGraphical;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
-  minGfxPkgs = optionals minimalGraphical (import ./packages/minimalGraphical.nix { inherit pkgs; });
-  extGfxPkgs = optionals extendedGraphical (import ./packages/extendedGraphical.nix { inherit pkgs; });
-
-
 in {
   imports = [
     inputs.hjem.nixosModules.default
@@ -14,7 +9,7 @@ in {
     ./modules/vscode/hjem.nix
   ];
 
-  users.users.michael.packages = commonPackages ++ minGfxPkgs ++ extGfxPkgs;
+  users.users.michael.packages = (import ./packages/userPkgs.nix {inherit config pkgs lib commonPackages;});
   users.users.root.packages = commonPackages;
 
   programs.fish.enable = true;
