@@ -5,6 +5,6 @@ _: {
     vscode.enable = true;
     waybar.enable = true;
     hyprland.enable = true;
-    includeZed = true;
+    packages.zed.include = true;
   };
 }

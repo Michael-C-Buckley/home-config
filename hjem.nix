@@ -5,7 +5,7 @@
 in {
   imports = [
     inputs.hjem.nixosModules.default
-    ./options/features.nix
+    ./options
     ./modules/vscode/hjem.nix
   ];
 

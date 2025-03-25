@@ -6,7 +6,7 @@
 in {
   imports = [
     ./programs
-    ./options/features.nix
+    ./options
     ./modules/vscode/home.nix
   ];
 
