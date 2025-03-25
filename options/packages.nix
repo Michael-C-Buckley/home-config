@@ -4,11 +4,11 @@
 in {
   options.features.michael.packages = {
     zed = {
-        include = mkEnableOption{};
-        package = mkOption {
-            type = package;
-            default = pkgs.zed-editor;
-        };
+      include = mkEnableOption{};
+      package = mkOption {
+        type = package;
+        default = pkgs.zed-editor;
+      };
     };
   };
 }
