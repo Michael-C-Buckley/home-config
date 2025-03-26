@@ -1,11 +1,10 @@
 # Base Entry for Home-Manager
-{config, lib, pkgs, ...}: let 
-  inherit (lib) mkDefault optionalAttrs optionals;
-  inherit (config.features.michael) useHome graphics;
+{config, lib, pkgs, ...}: let
+  inherit (lib) mkDefault optionalAttrs;
+  inherit (config.features.michael) useHome;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
 in {
   imports = [
-    ./programs
     ./options
     ./modules/vscode/home.nix
   ];

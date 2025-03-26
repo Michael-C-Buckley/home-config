@@ -1,6 +1,6 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
-  inherit (lib) optionals mkOverride;
+  inherit (lib) mkOverride;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
 in {
   imports = [
