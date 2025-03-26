@@ -9,9 +9,9 @@ in {
   };
 
   home.file = lib.mkIf enabled {
-    # I am currently using the Waybar Minimal project as my base
-    "${baseDir}/config".source = ./waybar-minimal/config;
-    "${baseDir}/style.css".source = ./waybar-minimal/style.css;
-    "${baseDir}/scripts/powerdraw.sh".source = ./waybar-minimal/scripts/powerdraw.sh;
+    # I am currently using the Purple Moon Minimal as my base
+    "${baseDir}/config".source = ./moon-purple/config;
+    "${baseDir}/style.css".source = ./moon-purple/style.css;
+    # "${baseDir}/scripts/powerdraw.sh".source = ./waybar-minimal/scripts/powerdraw.sh;
   };
 }
