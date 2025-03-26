@@ -1,6 +1,6 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
-  inherit (lib) optionals mkDefault;
+  inherit (lib) optionals mkOverride;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
 in {
   imports = [
@@ -12,8 +12,9 @@ in {
   users.users.michael.packages = (import ./packages/userPkgs.nix {inherit config pkgs lib commonPackages;});
   users.users.root.packages = commonPackages;
 
+  # Add this above default but below force
   programs.fish.enable = true;
-  users.users.michael.shell = mkDefault pkgs.fish;
+  users.users.michael.shell = mkOverride 900 pkgs.fish;
 
   hjem = {
     clobberByDefault = true;
