@@ -1,6 +1,6 @@
 # Base Entry for the Hjem outputs
 {config, pkgs, lib, inputs, ...}: let
-  inherit (lib) optionals mkForce;
+  inherit (lib) optionals mkDefault;
   commonPackages = (import ./packages/common.nix {inherit pkgs;});
 in {
   imports = [
@@ -13,7 +13,7 @@ in {
   users.users.root.packages = commonPackages;
 
   programs.fish.enable = true;
-  users.users.michael.shell = mkForce pkgs.fish;
+  users.users.michael.shell = mkDefault pkgs.fish;
 
   hjem = {
     clobberByDefault = true;
