@@ -1,5 +1,13 @@
 # Michael's Home Configs
 
+## ARCHIVED
+
+This is now archived and merged into my main system flake.  See it here:
+
+https://github.com/Michael-C-Buckley/nixos/tree/master/home
+
+## Previous Info
+
 These are some home directory configurations I have.  They are provided by [Home-Manager](https://github.com/nix-community/home-manager) and also by [Hjem](https://github.com/feel-co/hjem).
 
 ## Home-Manager
