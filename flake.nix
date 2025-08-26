@@ -2,12 +2,9 @@
   description = "Home Configs for Michael";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs?ref=nixos-unstable";
-
-    nix-devshells = {
-      url = "github:Michael-C-Buckley/nix-devshells";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    flake-parts.url = "git+https://github.com/hercules-ci/flake-parts?shallow=1";
+    systems.url = "git+https://github.com/nix-systems/default?shallow=1";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,59 +12,33 @@
     };
 
     hjem = {
-      url = "github:feel-co/hjem";
+      url = "git+https://github.com/feel-co/hjem?shallow=1";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-  };
 
-  outputs = {self, nixpkgs, home-manager, nix-devshells, ...} @ inputs: let
-    system = "x86_64-linux";
-    pkgs = import nixpkgs { inherit system; config = { allowUnfree = true; }; };
-  in {
-    checks = nix-devshells.checks;
-    devShells.x86_64-linux.default = nix-devshells.devShells.x86_64-linux.nixos;
-
-    homeConfigurations = let
-      hmConfig = modules: home-manager.lib.homeManagerConfiguration {
-        extraSpecialArgs = {inherit inputs;};
-        inherit pkgs;
-        modules = [./home.nix] ++ modules;
-      };
-    in {
-      "michael" = hmConfig [];
-      "michael@t14" = hmConfig [./hosts/t14 ./hosts/t14/home.nix];
-      "michael@x570" = hmConfig [./hosts/x570 ./hosts/x570/home.nix];
-      "michael@wsl" = hmConfig [./hosts/wsl ./hosts/wsl/home.nix];
-    };
-
-    # ---- nixosModules will not have access to the flake inputs here once imported elsewhere ----
-    # ---- You will need to supply them, but can just follow them from this flake             ----
-    nixosModules = let
-      homeMod = host: {...}: { imports = [
-        home-manager.nixosModules.home-manager
-        ./home.nix
-        ./hosts/${host}
-        ./hosts/${host}/home.nix
-      ];};
-    in {
-      home = {
-        default = {...}: { imports = [./home.nix]; };
-        wsl = homeMod "wsl";
-        t14 = homeMod "t14";
-        x570 = homeMod "x570";
-      };
-
-      # Hjem will only provide dotfile linking and some user-space packages via NixOS options
-      hjem = let
-        hjemMod = host: {...}: { imports = [./hjem.nix ./hosts/${host} ./hosts/${host}/hjem.nix];};
-      in {
-        default = {...}: { imports = [./hjem.nix]; };
-	      live-iso = self.outputs.nixosModules.hjem.default;
-        p520 = self.outputs.nixosModules.hjem.default;
-        t14 = hjemMod "t14";
-        x570 = hjemMod "x570";
-        wsl = {...}: {imports = [./hjem.nix ./hosts/wsl];};
+    hjem-rum = {
+      url = "git+https://github.com/snugnug/hjem-rum?shallow=1";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        hjem.follows = "hjem";
       };
     };
   };
+
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = import inputs.systems;
+      flake = {
+        hjemConfigurations = {
+          default = _: {imports = [./flake/hjem.nix];};
+        };
+        userFiles = {
+          default = import ./flake/files.nix;
+        };
+        # homeConfigurations = {};
+      };
+      perSystem = {pkgs, ...}: {
+        devShells.default = import ./flake/shell.nix {inherit pkgs;};
+      };
+    };
 }
