@@ -1,10 +1,8 @@
 # Michael's Home Configs
 
-## ARCHIVED
+## ARCHIVED BRANCH
 
-This is now archived and merged into my main system flake.  See it here:
-
-https://github.com/Michael-C-Buckley/nixos/tree/master/home
+This state was the previous schema I was managing this repository with.  It was originally archived when I merged all files into my name NixOS flake.  It has been broken out and overhauled again.
 
 ## Previous Info
 
