@@ -9,7 +9,7 @@
   inherit (config) packageSets;
   inherit (config.features.michael) minimalGraphical extendedGraphical;
   inherit (config.hjem.users) michael;
-  inherit (lib) mkDefault optionals mkOverride;
+  inherit (lib) mkDefault optionals;
 
   extGfx = mkDefault extendedGraphical;
 
@@ -23,17 +23,17 @@
     ++ optionals extendedGraphical packageSets.extendedGraphical
     ++ optionals extendedGraphical myGUIExtPkgs;
 in {
-  imports = [./options.nix];
+  imports = [../options.nix];
 
   # Home is not impermanent, but this removes these from snapshots
-  environment.persistence."/cache".users.michael.directories =
-    [
-      "Downloads"
-      ".cache"
-    ]
-    ++ optionals extendedGraphical [
-      ".config/legcord/Cache"
-    ];
+  # environment.persistence."/cache".users.michael.directories =
+  #   [
+  #     "Downloads"
+  #     ".cache"
+  #   ]
+  #   ++ optionals extendedGraphical [
+  #     ".config/legcord/Cache"
+  #   ];
 
   users.users.michael = {
     packages = userPkgs ++ michael.packageList;
@@ -48,18 +48,18 @@ in {
     # Push the existing files in to be merged
     files = self.outputs.userFiles.michael {inherit lib;} // michael.fileList;
 
-    environment.gnupg = {
-      enable = true;
-      enableSSHsupport = true;
-    };
+    # environment.gnupg = {
+    #   enable = true;
+    #   enableSSHsupport = true;
+    # };
 
-    programs = {
-      # keep-sorted start
-      custom.ns.enable = extGfx;
-      nvf.enable = extGfx;
-      vscode.enable = extGfx;
-      # keep-sorted end
-    };
+    # programs = {
+    #   # keep-sorted start
+    #   custom.ns.enable = extGfx;
+    #   nvf.enable = extGfx;
+    #   vscode.enable = extGfx;
+    #   # keep-sorted end
+    # };
 
     rum.misc.gtk = {
       enable = extGfx;
