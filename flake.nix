@@ -25,12 +25,16 @@
     };
   };
 
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    self,
+    flake-parts,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import inputs.systems;
       flake = {
         hjemConfigurations = {
-          default = _: {imports = [./flake/hjem.nix];};
+          default = _: {imports = ["${self}/flake/hjem/default.nix"];};
         };
         userFiles = {
           default = import ./flake/files.nix;
@@ -39,6 +43,10 @@
       };
       perSystem = {pkgs, ...}: {
         devShells.default = import ./flake/shell.nix {inherit pkgs;};
+
+        packages = {
+          ns = pkgs.callPackage ./flake/packages/ns.nix {};
+        };
       };
     };
 }
