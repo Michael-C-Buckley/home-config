@@ -10,6 +10,7 @@ pkgs.mkShellNoCC {
         ]
     ))
     alejandra
+    biome
     deadnix
     editorconfig-checker
     git
