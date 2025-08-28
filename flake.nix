@@ -3,8 +3,8 @@
 
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
-    flake-parts.url = "git+https://github.com/hercules-ci/flake-parts?shallow=1";
-    systems.url = "git+https://github.com/nix-systems/default?shallow=1";
+    flake-parts.url = "github:/hercules-ci/flake-parts";
+    systems.url = "github:/nix-systems/default";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -12,12 +12,12 @@
     };
 
     hjem = {
-      url = "git+https://github.com/feel-co/hjem?shallow=1";
+      url = "github:/feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
     hjem-rum = {
-      url = "git+https://github.com/snugnug/hjem-rum?shallow=1";
+      url = "github:/snugnug/hjem-rum";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         hjem.follows = "hjem";

@@ -22,16 +22,15 @@
       "locked": {
         "lastModified": 1754487366,
         "narHash": "sha256-pHYj8gUBapuUzKV/kN/tR3Zvqc7o6gdFB9XKXIp1SQ8=",
-        "ref": "refs/heads/main",
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
         "rev": "af66ad14b28a127c5c0f3bbb298218fc63528a18",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/hercules-ci/flake-parts"
+        "type": "github"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/hercules-ci/flake-parts"
+        "owner": "hercules-ci",
+        "repo": "flake-parts",
+        "type": "github"
       }
     },
     "flake-parts_2": {
@@ -60,18 +59,17 @@
         "smfh": "smfh"
       },
       "locked": {
-        "lastModified": 1756046137,
-        "narHash": "sha256-AS8mTZyvQDvP3XgSLPp/DI0GFhvdMlxcQBWTR48mBjU=",
-        "ref": "refs/heads/main",
-        "rev": "ce24546f7f552bb92315e013f2599776e0b33249",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/feel-co/hjem"
+        "lastModified": 1756255328,
+        "narHash": "sha256-WJ70Dv+tJjIl7mMOqUgcdcz+RrujDRoeKptiU6oh1lI=",
+        "owner": "feel-co",
+        "repo": "hjem",
+        "rev": "2426d6ad20e767895e936ed0c9563cc4e2b6c96f",
+        "type": "github"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/feel-co/hjem"
+        "owner": "feel-co",
+        "repo": "hjem",
+        "type": "github"
       }
     },
     "hjem-rum": {
@@ -88,16 +86,15 @@
       "locked": {
         "lastModified": 1755481525,
         "narHash": "sha256-HnKSN39AuEa8MuzwVRh816rddZjTGLRN/A9dvzlfjhA=",
-        "ref": "refs/heads/main",
+        "owner": "snugnug",
+        "repo": "hjem-rum",
         "rev": "7c639526ac8e4c3674221e6dcc9ab0f7c7a42a16",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/snugnug/hjem-rum"
+        "type": "github"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/snugnug/hjem-rum"
+        "owner": "snugnug",
+        "repo": "hjem-rum",
+        "type": "github"
       }
     },
     "home-manager": {
@@ -260,16 +257,15 @@
       "locked": {
         "lastModified": 1681028828,
         "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
-        "ref": "refs/heads/main",
+        "owner": "nix-systems",
+        "repo": "default",
         "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/nix-systems/default"
+        "type": "github"
       },
       "original": {
-        "shallow": true,
-        "type": "git",
-        "url": "https://github.com/nix-systems/default"
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
       }
     },
     "treefmt-nix": {
