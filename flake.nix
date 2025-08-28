@@ -1,6 +1,21 @@
 {
   description = "Home Configs for Michael";
 
+  outputs = {flake-parts, ...} @ inputs:
+    flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = import inputs.systems;
+      flake = {
+        hjemConfigurations = import ./outputs/hjemConfigurations.nix {inherit inputs;};
+        # homeConfigurations = {};
+        userFiles = import ./outputs/userFiles.nix;
+      };
+
+      perSystem = {pkgs, ...}: {
+        devShells = import ./outputs/devShells.nix {inherit pkgs;};
+        packages = import ./outputs/packages.nix {inherit pkgs;};
+      };
+    };
+
   inputs = {
     nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
 
@@ -35,40 +50,4 @@
       };
     };
   };
-
-  outputs = {flake-parts, ...} @ inputs:
-    flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = import inputs.systems;
-      flake = {
-        hjemConfigurations = {
-          default = _: {
-            imports = [
-              ./flake/hjem/default.nix
-              ./flake/hjem/extended.nix
-            ];
-            # I am currently only using Hjem on x86_64-linux
-            users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.default];
-          };
-          minimal = _: {
-            # I am currently only using Hjem on x86_64-linux
-            imports = [./flake/hjem/default.nix];
-            users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.minimal];
-          };
-        };
-
-        userFiles = {
-          default = import ./flake/files.nix;
-        };
-
-        # homeConfigurations = {};
-      };
-
-      perSystem = {pkgs, ...}: {
-        devShells.default = import ./flake/shell.nix {inherit pkgs;};
-
-        packages = {
-          ns = pkgs.callPackage ./flake/packages/ns.nix {};
-        };
-      };
-    };
 }
