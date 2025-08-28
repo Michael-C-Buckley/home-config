@@ -32,7 +32,7 @@ in {
       directory = "/home/michael";
 
       # Push the existing files in to be merged
-      files = (import ../files.nix {inherit lib;}) // fileList;
+      files = (import ../findFiles.nix {inherit lib;}) // fileList;
     };
   };
 }
