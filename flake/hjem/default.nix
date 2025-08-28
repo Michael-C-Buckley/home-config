@@ -1,87 +1,38 @@
 # Split into per-host basis
 {
-  self,
   config,
   pkgs,
   lib,
   ...
 }: let
-  inherit (config) packageSets;
-  inherit (config.features.michael) minimalGraphical extendedGraphical;
-  inherit (config.hjem.users) michael;
-  inherit (lib) mkDefault optionals;
+  inherit
+    (config.hjem.users.michael)
+    fileList
+    packageList
+    ;
 
-  extGfx = mkDefault extendedGraphical;
+  inherit (lib) mkDefault;
 
-  myCommonPkgs = import ./packageSets/common.nix {inherit pkgs;};
-  myGUIExtPkgs = import ./packageSets/extendedGraphical.nix {inherit pkgs;};
-
-  userPkgs =
-    packageSets.common
-    ++ myCommonPkgs
-    ++ optionals minimalGraphical packageSets.minimalGraphical
-    ++ optionals extendedGraphical packageSets.extendedGraphical
-    ++ optionals extendedGraphical myGUIExtPkgs;
+  myPkgs = import ../packageSets/common.nix {inherit pkgs;};
 in {
   imports = [../options.nix];
 
-  # Home is not impermanent, but this removes these from snapshots
-  # environment.persistence."/cache".users.michael.directories =
-  #   [
-  #     "Downloads"
-  #     ".cache"
-  #   ]
-  #   ++ optionals extendedGraphical [
-  #     ".config/legcord/Cache"
-  #   ];
+  programs.fish.enable = mkDefault true;
 
   users.users.michael = {
-    packages = userPkgs ++ michael.packageList;
+    packages = myPkgs ++ packageList;
     shell = pkgs.fish;
   };
 
-  hjem.users.michael = {
-    enable = true;
-    user = "michael";
-    directory = "/home/michael";
+  hjem = {
+    extraModules = [../modules/hjemOptions.nix];
+    users.michael = {
+      enable = true;
+      user = "michael";
+      directory = "/home/michael";
 
-    # Push the existing files in to be merged
-    files = self.outputs.userFiles.michael {inherit lib;} // michael.fileList;
-
-    # environment.gnupg = {
-    #   enable = true;
-    #   enableSSHsupport = true;
-    # };
-
-    # programs = {
-    #   # keep-sorted start
-    #   custom.ns.enable = extGfx;
-    #   nvf.enable = extGfx;
-    #   vscode.enable = extGfx;
-    #   # keep-sorted end
-    # };
-
-    rum.misc.gtk = {
-      enable = extGfx;
-      packages = with pkgs; [
-        nordzy-cursor-theme
-        gruvbox-dark-icons-gtk
-        arc-theme
-      ];
-      settings = {
-        theme-name = "Arc-Dark";
-        application-prefer-dark-theme = true;
-      };
-    };
-
-    appearance = {
-      cursor = {
-        manage = extGfx;
-        hyprtheme = "Nordzy-hyprcursors-white";
-        xtheme = "Nordzy-cursors-white";
-        size = 28;
-        package = pkgs.nordzy-cursor-theme;
-      };
+      # Push the existing files in to be merged
+      files = (import ../files.nix {inherit lib;}) // fileList;
     };
   };
 }

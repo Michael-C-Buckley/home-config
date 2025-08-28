@@ -1,38 +1,37 @@
-{pkgs, ...}: {
-  packageSets.extendedGraphical = with pkgs; [
-    # System Utilities
-    networkmanagerapplet
-    pavucontrol # Pulse Volume control
-    gammastep
-    gparted
-    wireshark
+{pkgs, ...}:
+with pkgs; [
+  # System Utilities
+  networkmanagerapplet
+  pavucontrol # Pulse Volume control
+  gammastep
+  gparted
+  wireshark
 
-    # Browser
-    vivaldi
+  # Browser
+  vivaldi
 
-    # Editors
-    emacs
-    meld
+  # Editors
+  emacs
+  meld
 
-    # File Explorer
-    xfce.thunar
+  # File Explorer
+  xfce.thunar
 
-    # Media
-    mpv
-    imv
-    zathura # PDF Viewer
-    kdePackages.koko # Photo Viewer
-    foliate # Ebook Reader
+  # Media
+  mpv
+  imv
+  zathura # PDF Viewer
+  kdePackages.koko # Photo Viewer
+  foliate # Ebook Reader
 
-    # Productivity
-    kdePackages.kalgebra # Calculator
-    gimp3
+  # Productivity
+  kdePackages.kalgebra # Calculator
+  gimp3
 
-    # Terminals
-    kitty
-    kitty-themes
+  # Terminals
+  kitty
+  kitty-themes
 
-    # Communication
-    bitwarden
-  ];
-}
+  # Communication
+  bitwarden
+]

@@ -1,16 +1,15 @@
-{pkgs, ...}: {
-  packageSets.minimalGraphical = with pkgs; [
-    # Clipboard
-    wl-clipboard
-    xclip
-    cliphist
-    wl-clipboard-x11
+{pkgs, ...}:
+with pkgs; [
+  # Clipboard
+  wl-clipboard
+  xclip
+  cliphist
+  wl-clipboard-x11
 
-    # Display
-    cage
+  # Display
+  cage
 
-    # Terminals
-    ghostty
-    sakura
-  ];
-}
+  # Terminals
+  ghostty
+  sakura
+]
