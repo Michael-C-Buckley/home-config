@@ -1,45 +1,51 @@
-{pkgs, ...}:
-with pkgs; [
-  # Git/Web
-  gitFull
-  lazygit
-  delta
-  curl
-  wget
+{pkgs, ...}: let
+  ns = pkgs.callPackage ../packages/ns.nix {};
+in
+  with pkgs; [
+    # Git/Web
+    gitFull
+    lazygit
+    delta
+    curl
+    wget
 
-  # Editors
-  helix
+    # Editors
+    helix
 
-  # Shells/Terminals
-  zsh
-  fish
-  nushell
-  xonsh
-  starship
-  tmux
-  zellij
+    # Shells/Terminals
+    zsh
+    fish
+    nushell
+    xonsh
+    starship
+    tmux
+    zellij
 
-  # Terminal Utilities
-  ripgrep
-  eza
-  duf
-  bat
-  vim
-  yazi
-  zoxide
-  du-dust
-  btop
-  fd
-  fzf
+    # Terminal Utilities
+    ripgrep
+    eza
+    duf
+    bat
+    vim
+    yazi
+    zoxide
+    du-dust
+    btop
+    fd
+    fzf
 
-  # Machine Utilities
-  nh
-  dig
-  unixtools.netstat
-  unixtools.arp
-  ethtool
-  gptfdisk
-  parted
-  lm_sensors
-  inetutils
-]
+    # Nix Tools
+    nh
+    nix-tree
+    ns
+
+    # Machine Utilities
+    dig
+    unixtools.netstat
+    unixtools.arp
+    ethtool
+    gptfdisk
+    parted
+    lm_sensors
+    inetutils
+  ]
