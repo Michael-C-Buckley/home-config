@@ -33,6 +33,7 @@ with pkgs; [
   fzf
 
   # Machine Utilities
+  nh
   dig
   unixtools.netstat
   unixtools.arp

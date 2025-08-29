@@ -1,15 +1,14 @@
-{inputs, ...}: {
-  default = _: {
-    imports = [
-      ../flake/hjem/default.nix
-      ../flake/hjem/extended.nix
-    ];
+{inputs, ...}: let
+  mkHjemCfg = {
+    modules ? [],
+    nvfVer ? "default",
+  }: {
+    imports = [../flake/hjem/default.nix] ++ modules;
     # I am currently only using Hjem on x86_64-linux
-    users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.default];
+    users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.${nvfVer}];
   };
-  minimal = _: {
-    # I am currently only using Hjem on x86_64-linux
-    imports = [../flake/hjem/default.nix];
-    users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.minimal];
-  };
+in {
+  default = _: mkHjemCfg {modules = [../flake/hjem/extended.nix];};
+  minimal = _: mkHjemCfg {nvfVer = "minimal";};
+  wsl = _: mkHjemCfg {};
 }
