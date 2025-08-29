@@ -27,6 +27,7 @@
       url = "github:Michael-C-Buckley/nvf-flake";
       inputs = {
         nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
       };
@@ -47,6 +48,10 @@
       inputs = {
         nixpkgs.follows = "nixpkgs";
         hjem.follows = "hjem";
+        ndg.inputs = {
+          flake-compat.follows = "flake-compat";
+          flake-parts.follows = "flake-parts";
+        };
       };
     };
   };
