@@ -36,4 +36,7 @@ with pkgs; [
 
   # Communication
   bitwarden
+  signal-desktop
+  materialgram
+  legcord
 ]
