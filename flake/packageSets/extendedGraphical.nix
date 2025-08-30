@@ -13,6 +13,7 @@ with pkgs; [
   # Editors
   emacs
   meld
+  vscodium-fhs
 
   # File Explorer
   xfce.thunar
@@ -27,6 +28,7 @@ with pkgs; [
   # Productivity
   kdePackages.kalgebra # Calculator
   gimp3
+  obsidian
 
   # Terminals
   kitty
