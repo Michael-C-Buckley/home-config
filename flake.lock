@@ -220,11 +220,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756403599,
-        "narHash": "sha256-JxgJTc1Ixb7M/Sqj/ViLZP7h8ofp3gStQJ51v9iwXGE=",
+        "lastModified": 1756521723,
+        "narHash": "sha256-LBwGE4yv5/9XBP+j8DqpZ6sMu9JN2bDf/HYsGv+XmpQ=",
         "owner": "Michael-C-Buckley",
         "repo": "nvf-flake",
-        "rev": "e93d8c05ed58da78d8886a93778333e9493c0c38",
+        "rev": "c79aa971f80d390d4e0235033d254f51ea070bed",
         "type": "github"
       },
       "original": {
