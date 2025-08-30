@@ -3,7 +3,10 @@
     modules ? [],
     nvfVer ? "default",
   }: {
-    imports = [../flake/hjem/default.nix] ++ modules;
+    imports = [
+      inputs.hjem.nixosModules.hjem
+      ../flake/hjem/default.nix
+    ] ++ modules;
     # I am currently only using Hjem on x86_64-linux
     users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.${nvfVer}];
   };
