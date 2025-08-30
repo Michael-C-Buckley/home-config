@@ -6,10 +6,11 @@
   inputs,
   ...
 }: let
+  getPkgs = file: (import ../packageSets/${file}.nix {inherit pkgs;});
   inherit (config.features.michael) extendedGraphical;
   inherit (lib) mkDefault;
   extGfx = mkDefault extendedGraphical;
-  myPkgs = import ../packageSets/extendedGraphical.nix {inherit pkgs;};
+  myPkgs = getPkgs "extendedGraphical" ++ getPkgs "minimalGraphical";
 in {
   users.users.michael = {
     packages = myPkgs;
