@@ -19,8 +19,8 @@ in {
   hjem = {
     extraModules = [
       inputs.hjem-rum.hjemModules.default
-      ../modules/appearance/cursor.nix
-      ../modules/appearance/gtk.nix
+      ./modules/appearance/cursor.nix
+      ./modules/appearance/gtk.nix
     ];
     users.michael = {
       enable = true;

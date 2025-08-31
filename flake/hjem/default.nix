@@ -26,8 +26,8 @@ in {
 
   hjem = {
     extraModules = [
-      ../modules/hjemOptions.nix
-      ../modules/gpg.nix
+      ./modules/hjemOptions.nix
+      ./modules/gpg.nix
     ];
     users.michael = {
       enable = true;
