@@ -12,7 +12,7 @@
 
       perSystem = {pkgs, ...}: {
         devShells = import ./outputs/devShells.nix {inherit pkgs;};
-        packages = import ./outputs/packages.nix {inherit pkgs;};
+        packages = import ./outputs/packages.nix {inherit inputs pkgs;};
       };
     };
 
@@ -23,8 +23,8 @@
     flake-parts.url = "github:/hercules-ci/flake-parts";
     systems.url = "github:/nix-systems/default";
 
-    nvf-flake = {
-      url = "github:Michael-C-Buckley/nvf-flake";
+    nvf = {
+      url = "github:notashelf/nvf";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";

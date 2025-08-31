@@ -86,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1756496801,
-        "narHash": "sha256-IYIsnPy+cJxe8RbDHBrCtfJY0ry2bG2H7WvMcewiGS8=",
+        "lastModified": 1756579987,
+        "narHash": "sha256-duCce8zGsaMsrqqOmLOsuaV1PVIw/vXWnKuLKZClsGg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "77a71380c38fb2a440b4b5881bbc839f6230e1cb",
+        "rev": "99a69bdf8a3c6bf038c4121e9c4b6e99706a187a",
         "type": "github"
       },
       "original": {
@@ -143,11 +143,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1756479261,
-        "narHash": "sha256-z4vdYBMStriKK8FE5apd/8oJDdIttr02o9rwqHQDb0o=",
-        "rev": "dfb2f12e899db4876308eba6d93455ab7da304cd",
+        "lastModified": 1756575425,
+        "narHash": "sha256-A1KwM4giJ8aDlhWmG8k0HUBulJq6BHvJDc7zKcML+4o=",
+        "rev": "d7600c775f877cd87b4f5a831c28aa94137377aa",
         "type": "tarball",
-        "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre853093.dfb2f12e899d/nixexprs.tar.xz"
+        "url": "https://releases.nixos.org/nixos/unstable/nixos-25.11pre854036.d7600c775f87/nixexprs.tar.xz"
       },
       "original": {
         "type": "tarball",
@@ -172,20 +172,16 @@
     "nvf": {
       "inputs": {
         "flake-compat": [
-          "nvf-flake",
           "flake-compat"
         ],
         "flake-parts": [
-          "nvf-flake",
           "flake-parts"
         ],
         "mnw": "mnw",
         "nixpkgs": [
-          "nvf-flake",
           "nixpkgs"
         ],
         "systems": [
-          "nvf-flake",
           "systems"
         ]
       },
@@ -203,36 +199,6 @@
         "type": "github"
       }
     },
-    "nvf-flake": {
-      "inputs": {
-        "flake-compat": [
-          "flake-compat"
-        ],
-        "flake-parts": [
-          "flake-parts"
-        ],
-        "nixpkgs": [
-          "nixpkgs"
-        ],
-        "nvf": "nvf",
-        "systems": [
-          "systems"
-        ]
-      },
-      "locked": {
-        "lastModified": 1756521723,
-        "narHash": "sha256-LBwGE4yv5/9XBP+j8DqpZ6sMu9JN2bDf/HYsGv+XmpQ=",
-        "owner": "Michael-C-Buckley",
-        "repo": "nvf-flake",
-        "rev": "c79aa971f80d390d4e0235033d254f51ea070bed",
-        "type": "github"
-      },
-      "original": {
-        "owner": "Michael-C-Buckley",
-        "repo": "nvf-flake",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "flake-compat": "flake-compat",
@@ -241,7 +207,7 @@
         "hjem-rum": "hjem-rum",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs",
-        "nvf-flake": "nvf-flake",
+        "nvf": "nvf",
         "systems": "systems_2"
       }
     },
