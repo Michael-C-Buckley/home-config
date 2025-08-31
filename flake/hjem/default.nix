@@ -37,7 +37,7 @@ in {
       # Push the existing files in to be merged
       files = (import ../findFiles.nix {inherit lib;}) // fileList;
 
-      gpg.enable = true;
+      gnupg.enable = true;
     };
   };
 }
