@@ -37,7 +37,10 @@ in {
       # Push the existing files in to be merged
       files = (import ../findFiles.nix {inherit lib;}) // fileList;
 
-      gnupg.enable = true;
+      gnupg = {
+        enable = true;
+        enableSSHsupport = true;
+      };
     };
   };
 }
