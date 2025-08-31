@@ -1,30 +1,37 @@
 {inputs, ...}: let
+  inherit (inputs) self hjem;
   mkHjemCfg = {
     modules ? [],
-    nvfVer ? "default",
+    nvfVer ? "nvf",
+    system ? "x86_64-linux",
   }: {
     imports =
       [
-        inputs.hjem.nixosModules.hjem
+        hjem.nixosModules.hjem
         ../flake/hjem/default.nix
       ]
       ++ modules;
 
-    # I am currently only using Hjem on x86_64-linux
-    hjem.linker = inputs.hjem.packages.x86_64-linux.smfh;
-    users.users.michael.packages = [inputs.nvf-flake.packages.x86_64-linux.${nvfVer}];
+    hjem.linker = hjem.packages.${system}.smfh;
+    users.users.michael.packages = [self.packages.${system}.${nvfVer}];
   };
 in {
   # Full Graphical Environment configs
   default = _: mkHjemCfg {modules = [../flake/hjem/extended.nix];};
 
   # Stripped bare, suitable for cloud or VMs
-  minimal = _: mkHjemCfg {nvfVer = "minimal";};
+  minimal = _: mkHjemCfg {nvfVer = "nvf-minimal";};
+
+  minimal-arm = _:
+    mkHjemCfg {
+      nvfVer = "nvf-minimal";
+      system = "aarch64-linux";
+    };
 
   # Bare metal servers, slightly above the stripped including a few extras
   server = _:
     mkHjemCfg {
-      nvfVer = "minimal";
+      nvfVer = "nvf-minimal";
       modules = [../flake/hjem/server.nix];
     };
 
