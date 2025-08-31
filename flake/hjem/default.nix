@@ -25,7 +25,10 @@ in {
   };
 
   hjem = {
-    extraModules = [../modules/hjemOptions.nix];
+    extraModules = [
+      ../modules/hjemOptions.nix
+      ../modules/gpg.nix
+    ];
     users.michael = {
       enable = true;
       user = "michael";
@@ -33,6 +36,8 @@ in {
 
       # Push the existing files in to be merged
       files = (import ../findFiles.nix {inherit lib;}) // fileList;
+
+      gpg.enable = true;
     };
   };
 }
