@@ -1,4 +1,25 @@
-{
+{lib, ...}: let
+  defaultBrowsers = [
+    "firefox.desktop"
+    "schizofox.desktop"
+    "chromium.desktop"
+  ];
+
+  browserAssociations = lib.listToAttrs (map (mimeType: {
+      name = mimeType;
+      value = defaultBrowsers;
+    }) [
+      "x-scheme-handler/http"
+      "x-scheme-handler/https"
+      "text/html"
+      "application/x-extension-htm"
+      "application/x-extension-html"
+      "application/x-extension-shtml"
+      "application/xhtml+xml"
+      "application/x-extension-xhtml"
+      "application/x-extension-xht"
+    ]);
+in {
   xdg.mimeApps = {
     enable = true;
 
@@ -6,7 +27,7 @@
       # Browsers
       "x-scheme-handler/http" = ["schizofox.desktop"];
       "x-scheme-handler/https" = ["schizofox.desktop"];
-      "x-scheme-handler/chrome" = ["schizofox.desktop"]; # needs tweaking
+      "x-scheme-handler/chrome" = ["chromium.desktop"];
       "text/html" = ["schizofox.desktop"];
       "application/x-extension-htm" = ["schizofox.desktop"];
       "application/x-extension-html" = ["schizofox.desktop"];
@@ -72,63 +93,22 @@
       "application/octet-stream" = ["ghostty.desktop"];
     };
 
-    associations.added = {
-      "x-scheme-handler/http" = ["schizofox.desktop"];
-      "x-scheme-handler/https" = ["schizofox.desktop"];
-      "x-scheme-handler/chrome" = ["schizofox.desktop"];
-      "text/html" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "application/x-extension-htm" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "application/x-extension-html" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "application/x-extension-shtml" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "application/xhtml+xml" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "application/x-extension-xhtml" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "application/x-extension-xht" = [
-        "schizofox.desktop"
-        "zen-twilight.desktop"
-        "userapp-Twilight-YRQP42.desktop"
-        "zen-beta.desktop"
-      ];
-      "x-scheme-handler/tg" = [
-        "io.github.kotatogram.desktop"
-        "io.github.kukuruzka165.materialgram.desktop"
-      ];
-      "application/zip" = ["org.pwmt.zathura-cb.desktop"];
-      "x-scheme-handler/tonsite" = ["io.github.kukuruzka165.materialgram.desktop"];
-      "text/plain" = [
-        "neovim.desktop"
-        "vim.desktop"
-      ];
-      "image/png" = ["koko.desktop"];
-    };
+    associations.added =
+      {
+        "x-scheme-handler/chrome" = ["chromium.desktop"];
+
+        "x-scheme-handler/tg" = [
+          "io.github.kotatogram.desktop"
+          "io.github.kukuruzka165.materialgram.desktop"
+        ];
+        "application/zip" = ["org.pwmt.zathura-cb.desktop"];
+        "x-scheme-handler/tonsite" = ["io.github.kukuruzka165.materialgram.desktop"];
+        "text/plain" = [
+          "neovim.desktop"
+          "vim.desktop"
+        ];
+        "image/png" = ["koko.desktop"];
+      }
+      // browserAssociations;
   };
 }
