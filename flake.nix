@@ -42,5 +42,17 @@
       url = "github:/feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    schizofox = {
+      url = "github:schizofox/schizofox";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-compat.follows = "flake-compat";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+        home-manager.follows = "home-manager";
+        searx-randomizer.inputs.flake-parts.follows = "flake-parts";
+      };
+    };
   };
 }
