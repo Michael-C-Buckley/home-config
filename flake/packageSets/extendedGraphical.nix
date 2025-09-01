@@ -16,7 +16,7 @@ with pkgs; [
   vscodium-fhs
 
   # File Explorer
-  xfce.thunar
+  mate.caja
 
   # Media
   mpv
