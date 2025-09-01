@@ -8,7 +8,7 @@
       modules = [../flake/packages/nvf] ++ extraModules;
     }).neovim;
 in {
-  ns = pkgs.callPackage ./flake/packages/ns.nix {};
+  ns = pkgs.callPackage ../flake/packages/ns.nix {};
 
   nvf = mkNvf [../flake/packages/nvf/extended.nix];
   nvf-minimal = mkNvf [];

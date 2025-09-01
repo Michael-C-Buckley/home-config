@@ -6,7 +6,7 @@
       systems = import inputs.systems;
       flake = {
         hjemConfigurations = import ./outputs/hjemConfigurations.nix {inherit inputs;};
-        # homeConfigurations = {};
+        homeConfigurations = import ./outputs/homeConfigurations.nix {inherit inputs;};
         userFiles = import ./outputs/userFiles.nix;
       };
 
@@ -41,18 +41,6 @@
     hjem = {
       url = "github:/feel-co/hjem";
       inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    hjem-rum = {
-      url = "github:/snugnug/hjem-rum";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        hjem.follows = "hjem";
-        ndg.inputs = {
-          flake-compat.follows = "flake-compat";
-          flake-parts.follows = "flake-parts";
-        };
-      };
     };
   };
 }
