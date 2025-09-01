@@ -8,9 +8,10 @@
 }: let
   getPkgs = file: (import ../packageSets/${file}.nix {inherit pkgs;});
   inherit (config.features.michael) extendedGraphical;
-  inherit (lib) mkDefault;
+  inherit (lib) concatMap mkDefault;
+
   extGfx = mkDefault extendedGraphical;
-  myPkgs = getPkgs "extendedGraphical" ++ getPkgs "minimalGraphical";
+  myPkgs = concatMap getPkgs ["extendedGraphical" "minimalGraphical" "linuxDesktop"];
 in {
   users.users.michael = {
     packages = myPkgs;
