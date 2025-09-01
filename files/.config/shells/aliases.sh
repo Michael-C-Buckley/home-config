@@ -38,3 +38,6 @@ alias zsls='zfs list -t snapshot -S creation -o name,creation,used,written,refer
 # SSH bypass
 alias sshn='ssh -o StrictHostKeyChecking=accept-new -o UserKnownHostsFile=/dev/null'
 
+# File Management
+alias duz='du -xh . | sort -hr | fzf'
+
