@@ -1,9 +1,10 @@
 _: {
-  vim = {
-    languages = import ./languages;
+  imports = [
+    ./languages/extra.nix
+  ];
 
+  vim = {
     autocomplete.blink-cmp.enable = true;
-    tabline.nvimBufferline.enable = true;
 
     runner.run-nvim = {
       enable = true;

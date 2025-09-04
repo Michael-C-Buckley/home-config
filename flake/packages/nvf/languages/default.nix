@@ -1,19 +1,23 @@
 {
-  enableTreesitter = true;
+  vim.languages = {
+    enableTreesitter = true;
 
-  bash.enable = true;
-  css.enable = true;
-  html.enable = true;
-  sql.enable = true;
-  rust.enable = true;
-  yaml.enable = true;
-  nix = import ./nix.nix;
+    bash.enable = true;
+    yaml.enable = true;
 
-  python = {
-    enable = true;
-    dap.enable = true;
-    format.enable = true;
-    lsp.enable = true;
-    treesitter.enable = true;
+    nix = {
+      enable = true;
+      extraDiagnostics = {
+        enable = true;
+        types = [
+          "statix"
+          "deadnix"
+        ];
+      };
+      format = {
+        enable = true;
+        type = "alejandra";
+      };
+    };
   };
 }

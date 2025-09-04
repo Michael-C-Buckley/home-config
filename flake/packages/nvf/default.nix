@@ -1,6 +1,7 @@
 {
   imports = [
     ./keymaps
+    ./languages
     ./plugins
     ./ui.nix
   ];

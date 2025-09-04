@@ -9,6 +9,7 @@
 
     comments.comment-nvim.enable = true;
     statusline.lualine.enable = true;
+    tabline.nvimBufferline.enable = true;
 
     # Navigation
     projects.project-nvim.enable = true;
