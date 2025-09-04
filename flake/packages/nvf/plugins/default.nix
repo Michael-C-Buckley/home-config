@@ -1,1 +1,6 @@
-{pkgs}: import ./themes.nix {inherit pkgs;}
+_: {
+  imports = [
+    ./themes.nix
+    ./lazy.nix
+  ];
+}
