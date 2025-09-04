@@ -4,7 +4,10 @@ _: {
   ];
 
   vim = {
-    autocomplete.blink-cmp.enable = true;
+    autocomplete.blink-cmp = {
+      enable = true;
+      friendly-snippets.enable = true;
+    };
 
     runner.run-nvim = {
       enable = true;
