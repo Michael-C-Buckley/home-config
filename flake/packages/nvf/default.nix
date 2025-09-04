@@ -3,6 +3,7 @@
     ./keymaps
     ./languages
     ./plugins
+    ./themes
     ./ui.nix
   ];
 
