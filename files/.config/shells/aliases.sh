@@ -24,6 +24,7 @@ alias gcm='git commit -m'
 alias gp='git push'
 alias gf='git fetch'
 alias grv='git remote -v'
+alias lg='lazygit'
 
 # Kubernetes
 alias k='kubectl'
