@@ -1,3 +1,3 @@
-{
-  default = import ../flake/findFiles.nix;
+{flake, ...}: {
+  flake.userFiles.default = import ../flake/findFiles.nix;
 }

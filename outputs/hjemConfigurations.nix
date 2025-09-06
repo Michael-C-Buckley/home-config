@@ -1,4 +1,4 @@
-{inputs, ...}: let
+{flake, inputs, pkgs, ...}: let
   inherit (inputs) self hjem;
   mkHjemCfg = {
     modules ? [],
@@ -16,25 +16,27 @@
     users.users.michael.packages = [self.packages.${system}.${nvfVer}];
   };
 in {
-  # Full Graphical Environment configs
-  default = _: mkHjemCfg {modules = [../flake/hjem/extended.nix];};
+  flake.hjemConfigurations = {
+    # Full Graphical Environment configs
+    default = _: mkHjemCfg {modules = [../flake/hjem/extended.nix];};
 
-  # Stripped bare, suitable for cloud or VMs
-  minimal = _: mkHjemCfg {nvfVer = "nvf-minimal";};
+    # Stripped bare, suitable for cloud or VMs
+    minimal = _: mkHjemCfg {nvfVer = "nvf-minimal";};
 
-  minimal-arm = _:
-    mkHjemCfg {
-      nvfVer = "nvf-minimal";
-      system = "aarch64-linux";
-    };
+    minimal-arm = _:
+      mkHjemCfg {
+        nvfVer = "nvf-minimal";
+        system = "aarch64-linux";
+      };
 
-  # Bare metal servers, slightly above the stripped including a few extras
-  server = _:
-    mkHjemCfg {
-      nvfVer = "nvf-minimal";
-      modules = [../flake/hjem/server.nix];
-    };
+    # Bare metal servers, slightly above the stripped including a few extras
+    server = _:
+      mkHjemCfg {
+        nvfVer = "nvf-minimal";
+        modules = [../flake/hjem/server.nix];
+      };
 
-  # As name implies
-  wsl = _: mkHjemCfg {};
+    # As name implies
+    wsl = _: mkHjemCfg {};
+  };
 }

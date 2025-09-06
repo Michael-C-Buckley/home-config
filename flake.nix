@@ -4,16 +4,7 @@
   outputs = {flake-parts, ...} @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import inputs.systems;
-      flake = {
-        hjemConfigurations = import ./outputs/hjemConfigurations.nix {inherit inputs;};
-        homeConfigurations = import ./outputs/homeConfigurations.nix {inherit inputs;};
-        userFiles = import ./outputs/userFiles.nix;
-      };
-
-      perSystem = {pkgs, ...}: {
-        devShells = import ./outputs/devShells.nix {inherit pkgs;};
-        packages = import ./outputs/packages.nix {inherit inputs pkgs;};
-      };
+      imports = [./outputs];
     };
 
   inputs = {
