@@ -8,6 +8,11 @@ in
     delta
     curl
     wget
+    tig
+    gh
+
+    # Security
+    sops
 
     # Editors
     helix
