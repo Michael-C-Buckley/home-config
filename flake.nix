@@ -1,10 +1,16 @@
 {
   description = "Home Configs for Michael";
 
-  outputs = {flake-parts, ...} @ inputs:
+  outputs = {
+    self,
+    flake-parts,
+    ...
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = import inputs.systems;
       imports = [./outputs];
+
+      flake.hydraJobs = {inherit (self) packages homeConfigurations;};
     };
 
   inputs = {
@@ -42,7 +48,6 @@
         flake-parts.follows = "flake-parts";
         systems.follows = "systems";
         home-manager.follows = "home-manager";
-        searx-randomizer.inputs.flake-parts.follows = "flake-parts";
       };
     };
   };
