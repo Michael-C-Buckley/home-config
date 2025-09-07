@@ -1,5 +1,9 @@
-{flake, inputs, pkgs, ...}: let
-  inherit (inputs) home-manager nixpkgs;
+{
+  inputs,
+  pkgs,
+  ...
+}: let
+  inherit (inputs) home-manager;
 
   homeConfig = {
     modules ? [],

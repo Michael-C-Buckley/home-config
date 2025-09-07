@@ -1,4 +1,4 @@
-{flake, inputs, pkgs, ...}: let
+{inputs, ...}: let
   inherit (inputs) self hjem;
   mkHjemCfg = {
     modules ? [],
