@@ -7,7 +7,8 @@
     ...
   } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = import inputs.systems;
+      # These are the only systems types I support
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin"];
       imports = [./outputs];
 
       flake.hydraJobs = {inherit (self) packages homeConfigurations;};
@@ -18,7 +19,6 @@
 
     flake-compat.url = "github:edolstra/flake-compat";
     flake-parts.url = "github:/hercules-ci/flake-parts";
-    systems.url = "github:/nix-systems/default";
 
     nvf = {
       url = "github:notashelf/nvf";
@@ -26,7 +26,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
       };
     };
 
@@ -46,7 +45,6 @@
         nixpkgs.follows = "nixpkgs";
         flake-compat.follows = "flake-compat";
         flake-parts.follows = "flake-parts";
-        systems.follows = "systems";
         home-manager.follows = "home-manager";
       };
     };
