@@ -32,4 +32,6 @@ with pkgs; [
   # Communication
   signal-desktop
   legcord
+
+  nil # For use with vscodium until I wrap it
 ]
